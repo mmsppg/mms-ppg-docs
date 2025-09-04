@@ -1,0 +1,847 @@
+---
+title: 'Troubleshooting Guide'
+description: 'Common issues and solutions for the MMS PPG website and CMS'
+---
+
+## Quick Diagnostic Checklist
+
+When experiencing issues, start with these basic checks:
+
+<Steps>
+  <Step title="Check System Status">
+    - Is the website loading at all?
+    - Can you access the admin panel?
+    - Are other users experiencing the same issue?
+    - Check your internet connection
+  </Step>
+  
+  <Step title="Verify Credentials">
+    - Are you using the correct login details?
+    - Has your password expired?
+    - Do you have the right permissions for what you're trying to do?
+  </Step>
+  
+  <Step title="Clear Browser Cache">
+    - Refresh the page (Ctrl+F5 or Cmd+Shift+R)
+    - Clear browser cache and cookies
+    - Try a different browser or incognito/private mode
+  </Step>
+  
+  <Step title="Check Recent Changes">
+    - Was anything changed recently?
+    - Are there any ongoing maintenance activities?
+    - Check for system notifications or alerts
+  </Step>
+</Steps>
+
+## Common User Issues
+
+### Login and Authentication Problems
+
+<AccordionGroup>
+  <Accordion title="🚫 Cannot Log In">
+    **Symptoms:**
+    - "Invalid credentials" error message
+    - Login page keeps reloading
+    - Two-factor authentication not working
+    
+    **Possible Causes:**
+    - Incorrect username or password
+    - Account locked due to failed attempts
+    - Two-factor authentication app out of sync
+    - Browser cookies disabled
+    
+    **Solutions:**
+    1. **Double-check credentials:**
+       - Verify username (usually email address)
+       - Check for caps lock or typing errors
+       - Try typing password in a text editor first
+    
+    2. **Reset password:**
+       - Click "Forgot Password" on login page
+       - Check email for reset instructions
+       - Follow the reset link within 24 hours
+    
+    3. **Two-factor authentication issues:**
+       - Ensure device clock is accurate
+       - Try generating a new code
+       - Use backup codes if available
+       - Contact admin to reset 2FA if needed
+    
+    4. **Browser issues:**
+       - Enable cookies and JavaScript
+       - Clear browser cache and cookies
+       - Try incognito/private browsing mode
+       - Test with a different browser
+    
+    <img src="/images/troubleshooting/login-error.png" alt="Login error message example" />
+  </Accordion>
+
+  <Accordion title="🔒 Session Timeout Issues">
+    **Symptoms:**
+    - Automatically logged out while working
+    - "Session expired" messages
+    - Work lost due to timeout
+    
+    **Causes:**
+    - Inactivity timeout (default: 1 hour)
+    - Browser closed or crashed
+    - Network connectivity issues
+    
+    **Solutions:**
+    1. **Prevent timeouts:**
+       - Save work frequently (Ctrl+S)
+       - Keep admin panel tab active
+       - Avoid long periods of inactivity
+    
+    2. **Recover from timeout:**
+       - Log back in immediately
+       - Check if auto-saved content exists
+       - Recreate lost work if necessary
+    
+    3. **Extend session:**
+       - Contact admin about longer session times
+       - Use "Remember me" option if available
+  </Accordion>
+
+  <Accordion title="👤 Permission Denied Errors">
+    **Symptoms:**
+    - "Access denied" or "Insufficient permissions"
+    - Missing menu items or buttons
+    - Cannot edit or publish content
+    
+    **Causes:**
+    - User role doesn't have required permissions
+    - Trying to edit someone else's content
+    - Account permissions changed recently
+    
+    **Solutions:**
+    1. **Check your role:**
+       - Go to user profile to see assigned role
+       - Verify what permissions your role has
+       - Contact admin if permissions seem incorrect
+    
+    2. **Content ownership:**
+       - You can only edit your own content (unless you're a publisher)
+       - Check who created the content you're trying to edit
+       - Ask the original creator or a publisher to make changes
+    
+    3. **Request access:**
+       - Contact your administrator
+       - Explain what you need to do
+       - Provide business justification for access
+  </Accordion>
+</AccordionGroup>
+
+### Content Creation Issues
+
+<AccordionGroup>
+  <Accordion title="💾 Content Not Saving">
+    **Symptoms:**
+    - Changes disappear after saving
+    - "Save failed" error messages
+    - Content reverts to previous version
+    
+    **Possible Causes:**
+    - Network connectivity issues
+    - Session timeout during save
+    - Browser compatibility problems
+    - Server-side errors
+    
+    **Solutions:**
+    1. **Immediate actions:**
+       - Don't refresh the page yet
+       - Copy your content to clipboard
+       - Try saving again
+       - Check network connection
+    
+    2. **Troubleshooting steps:**
+       - Check browser console for errors (F12)
+       - Try saving smaller sections at a time
+       - Use a different browser
+       - Clear browser cache
+    
+    3. **Prevention:**
+       - Save frequently while working
+       - Write content in external editor first
+       - Keep backup copies of important content
+       - Use stable internet connection
+    
+    <img src="/images/troubleshooting/save-error.png" alt="Content save error message" />
+  </Accordion>
+
+  <Accordion title="🖼️ Image Upload Problems">
+    **Symptoms:**
+    - Images won't upload
+    - Upload progress bar stuck
+    - "File too large" errors
+    - Images appear broken after upload
+    
+    **Common Causes:**
+    - File size exceeds limit (usually 10MB)
+    - Unsupported file format
+    - Network timeout during upload
+    - Insufficient storage space
+    
+    **Solutions:**
+    1. **File size issues:**
+       - Compress images before upload
+       - Use online tools like TinyPNG
+       - Resize images to appropriate dimensions
+       - Maximum recommended: 1920px wide, under 2MB
+    
+    2. **File format problems:**
+       - Use supported formats: JPG, PNG, WebP, SVG
+       - Convert unsupported formats
+       - Avoid proprietary formats like PSD or AI
+    
+    3. **Upload process:**
+       - Try uploading one image at a time
+       - Use stable internet connection
+       - Wait for upload to complete fully
+       - Refresh page if upload seems stuck
+    
+    4. **Image optimization tips:**
+       ```
+       Recommended image sizes:
+       - Featured images: 1200x600px
+       - Thumbnails: 300x300px
+       - Content images: 800px wide max
+       - File size: Under 2MB each
+       ```
+  </Accordion>
+
+  <Accordion title="🔗 Link and Formatting Issues">
+    **Symptoms:**
+    - Links not working properly
+    - Formatting disappears when saving
+    - Rich text editor not responding
+    - Copy/paste formatting problems
+    
+    **Causes:**
+    - Invalid URL formats
+    - Browser compatibility issues
+    - Conflicting formatting codes
+    - JavaScript errors
+    
+    **Solutions:**
+    1. **Link problems:**
+       - Ensure URLs start with http:// or https://
+       - Test links in new tab before saving
+       - Use the link tool rather than typing URLs
+       - Check for typos in URLs
+    
+    2. **Formatting issues:**
+       - Use the editor's formatting tools
+       - Avoid pasting from Word documents
+       - Use "Paste as plain text" option
+       - Clear formatting and reapply if needed
+    
+    3. **Editor problems:**
+       - Refresh the page and try again
+       - Clear browser cache
+       - Try different browser
+       - Disable browser extensions temporarily
+  </Accordion>
+</AccordionGroup>
+
+### Search and Navigation Issues
+
+<AccordionGroup>
+  <Accordion title="🔍 Search Not Working">
+    **Symptoms:**
+    - Search returns no results
+    - Search box not responding
+    - Incorrect search results
+    
+    **Causes:**
+    - Search index needs updating
+    - Content not properly indexed
+    - Search terms too specific or generic
+    
+    **Solutions:**
+    1. **Try different search terms:**
+       - Use simpler, more general terms
+       - Try synonyms or alternative words
+       - Search for partial words or phrases
+    
+    2. **Check content status:**
+       - Only published content appears in search
+       - Draft content won't be found
+       - Recently published content may take time to index
+    
+    3. **Contact administrator:**
+       - Report persistent search issues
+       - Request search index rebuild
+       - Suggest search improvements
+  </Accordion>
+
+  <Accordion title="🧭 Navigation Problems">
+    **Symptoms:**
+    - Menu items missing or broken
+    - Pages not accessible
+    - Breadcrumb navigation incorrect
+    
+    **Causes:**
+    - Navigation menu configuration issues
+    - Page permissions problems
+    - Broken internal links
+    
+    **Solutions:**
+    1. **Check page status:**
+       - Ensure pages are published
+       - Verify you have permission to view
+       - Check if pages have been moved or deleted
+    
+    2. **Try alternative navigation:**
+       - Use search to find content
+       - Check sitemap or site index
+       - Use direct URLs if known
+    
+    3. **Report issues:**
+       - Note specific broken links
+       - Describe expected vs. actual behavior
+       - Contact administrator with details
+  </Accordion>
+</AccordionGroup>
+
+## Technical Issues
+
+### Website Performance Problems
+
+<AccordionGroup>
+  <Accordion title="🐌 Slow Loading Pages">
+    **Symptoms:**
+    - Pages take long time to load
+    - Images loading slowly
+    - Admin panel sluggish
+    
+    **Possible Causes:**
+    - Large image files
+    - Network connectivity issues
+    - Server performance problems
+    - Browser cache issues
+    
+    **User Solutions:**
+    1. **Check your connection:**
+       - Test internet speed
+       - Try different network if possible
+       - Close other bandwidth-heavy applications
+    
+    2. **Browser optimization:**
+       - Clear browser cache and cookies
+       - Disable unnecessary browser extensions
+       - Update browser to latest version
+       - Try different browser
+    
+    3. **Report persistent issues:**
+       - Note specific slow pages
+       - Include your location and internet provider
+       - Mention time of day when slowness occurs
+    
+    **Admin Solutions:**
+    1. **Image optimization:**
+       - Compress large images
+       - Use appropriate image formats
+       - Implement lazy loading
+       - Set up CDN for faster delivery
+    
+    2. **Server optimization:**
+       - Monitor server resources
+       - Optimize database queries
+       - Enable caching
+       - Check for traffic spikes
+  </Accordion>
+
+  <Accordion title="📱 Mobile Display Issues">
+    **Symptoms:**
+    - Website doesn't display properly on mobile
+    - Text too small to read
+    - Buttons hard to tap
+    - Horizontal scrolling required
+    
+    **Causes:**
+    - Responsive design issues
+    - Large images not optimized for mobile
+    - CSS conflicts
+    - Browser compatibility
+    
+    **Solutions:**
+    1. **User troubleshooting:**
+       - Try rotating device orientation
+       - Zoom in/out to adjust text size
+       - Update mobile browser
+       - Clear mobile browser cache
+    
+    2. **Content considerations:**
+       - Use mobile-friendly image sizes
+       - Keep text concise for mobile reading
+       - Test content on mobile devices
+       - Avoid complex layouts
+    
+    3. **Reporting mobile issues:**
+       - Specify device type and browser
+       - Include screenshots if possible
+       - Describe specific problems encountered
+  </Accordion>
+
+  <Accordion title="🔧 Browser Compatibility Issues">
+    **Symptoms:**
+    - Features not working in certain browsers
+    - Display differences between browsers
+    - JavaScript errors in console
+    
+    **Supported Browsers:**
+    - Chrome 90+
+    - Firefox 88+
+    - Safari 14+
+    - Edge 90+
+    
+    **Solutions:**
+    1. **Update your browser:**
+       - Use latest version of supported browsers
+       - Enable automatic updates
+       - Clear cache after updates
+    
+    2. **Browser settings:**
+       - Enable JavaScript
+       - Allow cookies
+       - Disable conflicting extensions
+       - Reset browser settings if needed
+    
+    3. **Alternative browsers:**
+       - Try different browser if issues persist
+       - Use incognito/private mode for testing
+       - Report browser-specific issues to admin
+  </Accordion>
+</AccordionGroup>
+
+### API and Integration Issues
+
+<AccordionGroup>
+  <Accordion title="🔌 API Connection Errors">
+    **Symptoms:**
+    - Content not loading from CMS
+    - "API Error" messages
+    - Outdated content displaying
+    
+    **For Administrators:**
+    1. **Check API status:**
+       ```bash
+       # Test API connectivity
+       curl -H "Authorization: Bearer YOUR_TOKEN" \
+            https://your-directus.app/items/blog_posts
+       ```
+    
+    2. **Verify authentication:**
+       - Check API token validity
+       - Ensure token has correct permissions
+       - Regenerate token if expired
+    
+    3. **Monitor API limits:**
+       - Check rate limiting status
+       - Monitor API usage patterns
+       - Adjust limits if necessary
+    
+    **For Users:**
+    - Refresh page to retry API calls
+    - Clear browser cache
+    - Report persistent API errors to admin
+  </Accordion>
+
+  <Accordion title="🔄 Sync Issues">
+    **Symptoms:**
+    - Changes not appearing on website
+    - Content out of sync between admin and public site
+    - Delayed updates
+    
+    **Causes:**
+    - Caching delays
+    - Webhook failures
+    - Build process issues
+    
+    **Solutions:**
+    1. **Wait for sync:**
+       - Changes may take 5-10 minutes to appear
+       - Check again after waiting
+       - Verify content is actually published
+    
+    2. **Force refresh:**
+       - Clear browser cache
+       - Use hard refresh (Ctrl+F5)
+       - Try incognito/private browsing
+    
+    3. **Admin actions:**
+       - Trigger manual site rebuild
+       - Check webhook configurations
+       - Monitor build logs for errors
+  </Accordion>
+</AccordionGroup>
+
+## Error Messages and Solutions
+
+### Common Error Messages
+
+<Tabs>
+  <Tab title="Authentication Errors">
+    **"Invalid token" or "Unauthorized"**
+    - **Cause**: API token expired or invalid
+    - **Solution**: Regenerate API token in admin settings
+    
+    **"Access denied"**
+    - **Cause**: Insufficient permissions for requested action
+    - **Solution**: Contact admin to review user permissions
+    
+    **"Session expired"**
+    - **Cause**: Logged out due to inactivity
+    - **Solution**: Log back in and retry action
+  </Tab>
+
+  <Tab title="Content Errors">
+    **"Required field missing"**
+    - **Cause**: Mandatory fields not completed
+    - **Solution**: Fill in all required fields (marked with *)
+    
+    **"Slug already exists"**
+    - **Cause**: URL slug conflicts with existing content
+    - **Solution**: Choose a different, unique slug
+    
+    **"File too large"**
+    - **Cause**: Uploaded file exceeds size limit
+    - **Solution**: Compress file or use smaller image
+  </Tab>
+
+  <Tab title="System Errors">
+    **"500 Internal Server Error"**
+    - **Cause**: Server-side problem
+    - **Solution**: Wait and retry, contact admin if persistent
+    
+    **"404 Not Found"**
+    - **Cause**: Requested page or resource doesn't exist
+    - **Solution**: Check URL spelling, use navigation to find content
+    
+    **"Connection timeout"**
+    - **Cause**: Network or server connectivity issues
+    - **Solution**: Check internet connection, retry after waiting
+  </Tab>
+</Tabs>
+
+## Diagnostic Tools and Information
+
+### Browser Developer Tools
+
+<Steps>
+  <Step title="Open Developer Tools">
+    **Windows/Linux**: Press F12 or Ctrl+Shift+I
+    **Mac**: Press Cmd+Option+I
+    
+    <img src="/images/troubleshooting/dev-tools.png" alt="Browser developer tools interface" />
+  </Step>
+
+  <Step title="Check Console for Errors">
+    1. Click "Console" tab
+    2. Look for red error messages
+    3. Copy error text for support requests
+    4. Note any warnings (yellow messages)
+  </Step>
+
+  <Step title="Monitor Network Activity">
+    1. Click "Network" tab
+    2. Refresh page to see all requests
+    3. Look for failed requests (red status)
+    4. Check response codes and timing
+  </Step>
+
+  <Step title="Inspect Elements">
+    1. Right-click on problematic element
+    2. Select "Inspect" or "Inspect Element"
+    3. View HTML structure and CSS styles
+    4. Check for missing or broken elements
+  </Step>
+</Steps>
+
+### System Information to Collect
+
+When reporting issues, include this information:
+
+<AccordionGroup>
+  <Accordion title="🖥️ Browser Information">
+    **Essential Details:**
+    - Browser name and version
+    - Operating system
+    - Screen resolution
+    - Extensions/add-ons installed
+    
+    **How to Find:**
+    - Chrome: Menu → Help → About Google Chrome
+    - Firefox: Menu → Help → About Firefox
+    - Safari: Safari → About Safari
+    - Edge: Menu → Help and feedback → About Microsoft Edge
+  </Accordion>
+
+  <Accordion title="🌐 Network Information">
+    **Connection Details:**
+    - Internet service provider
+    - Connection type (WiFi, mobile, ethernet)
+    - Approximate connection speed
+    - Location (general area, not specific address)
+    
+    **Speed Test:**
+    - Use speedtest.net or similar service
+    - Note download/upload speeds
+    - Check for high latency or packet loss
+  </Accordion>
+
+  <Accordion title="⏰ Timing Information">
+    **When Issues Occur:**
+    - Specific date and time
+    - Duration of problem
+    - Frequency (always, sometimes, once)
+    - Time zone
+    
+    **Context:**
+    - What you were trying to do
+    - Steps taken before error occurred
+    - Whether others experienced same issue
+  </Accordion>
+</AccordionGroup>
+
+## Getting Help and Support
+
+### Self-Help Resources
+
+<CardGroup cols={2}>
+  <Card title="Documentation" icon="book">
+    **Available Resources:**
+    - User guides for each content type
+    - Video tutorials (if available)
+    - FAQ sections
+    - Best practices guides
+    
+    **How to Use:**
+    - Search documentation for specific topics
+    - Follow step-by-step guides
+    - Check FAQ for common questions
+  </Card>
+  
+  <Card title="Community Support" icon="users">
+    **Peer Assistance:**
+    - Ask colleagues who use the system
+    - Share tips and tricks
+    - Collaborate on content creation
+    - Learn from experienced users
+    
+    **Knowledge Sharing:**
+    - Document solutions you discover
+    - Help train new users
+    - Suggest improvements to processes
+  </Card>
+</CardGroup>
+
+### Contacting Technical Support
+
+<Steps>
+  <Step title="Gather Information">
+    Before contacting support, collect:
+    - Detailed description of the problem
+    - Steps to reproduce the issue
+    - Error messages (exact text or screenshots)
+    - Browser and system information
+    - When the problem started occurring
+  </Step>
+
+  <Step title="Choose Support Channel">
+    **Email Support**: support@mmsppg.org
+    - Best for: Non-urgent issues, detailed problems
+    - Response time: 1-2 business days
+    - Include: All relevant information and screenshots
+    
+    **Phone Support**: [Practice phone number]
+    - Best for: Urgent issues, immediate assistance needed
+    - Available: Business hours only
+    - Have: Computer ready for troubleshooting steps
+    
+    **In-Person Support**: Visit practice reception
+    - Best for: Complex issues, training needs
+    - Schedule: Appointment recommended
+    - Bring: Notes about the problem
+  </Step>
+
+  <Step title="Provide Clear Description">
+    **Effective Support Request Format:**
+    ```
+    Subject: [Brief description of issue]
+    
+    Problem Description:
+    - What you were trying to do
+    - What happened instead
+    - When the problem started
+    
+    Steps to Reproduce:
+    1. First step
+    2. Second step
+    3. Where the problem occurs
+    
+    System Information:
+    - Browser: [Name and version]
+    - Operating System: [Windows/Mac/etc.]
+    - Time of issue: [Date and time]
+    
+    Additional Information:
+    - Screenshots (if applicable)
+    - Error messages (exact text)
+    - Any recent changes or updates
+    ```
+  </Step>
+
+  <Step title="Follow Up">
+    - Respond promptly to support requests for more information
+    - Test suggested solutions thoroughly
+    - Confirm when issues are resolved
+    - Provide feedback on support experience
+  </Step>
+</Steps>
+
+### Emergency Procedures
+
+<AccordionGroup>
+  <Accordion title="🚨 Critical System Issues">
+    **When to Use Emergency Procedures:**
+    - Website completely down
+    - Security breach suspected
+    - Data loss or corruption
+    - Unable to publish urgent health information
+    
+    **Emergency Contacts:**
+    - System Administrator: [Emergency contact]
+    - Practice Manager: [Emergency contact]
+    - Technical Support: [24/7 emergency line if available]
+    
+    **Immediate Actions:**
+    1. Document the issue with screenshots
+    2. Note exact time problem started
+    3. Contact emergency support immediately
+    4. Avoid making changes that might worsen the situation
+  </Accordion>
+
+  <Accordion title="⚡ Urgent Content Updates">
+    **Bypass Procedures for Emergencies:**
+    - Practice closure announcements
+    - Health and safety alerts
+    - Emergency contact information changes
+    
+    **Emergency Publishing Process:**
+    1. Create content as usual
+    2. Mark as "URGENT" in title or notes
+    3. Contact designated emergency reviewer immediately
+    4. Get verbal approval for publication
+    5. Publish immediately
+    6. Complete formal review process afterward
+  </Accordion>
+</AccordionGroup>
+
+## Prevention and Best Practices
+
+### Avoiding Common Issues
+
+<CardGroup cols={2}>
+  <Card title="Regular Maintenance" icon="wrench">
+    **User Actions:**
+    - Clear browser cache weekly
+    - Update browser regularly
+    - Save work frequently
+    - Log out properly when finished
+    
+    **Admin Actions:**
+    - Monitor system performance
+    - Update software regularly
+    - Backup data consistently
+    - Review user feedback
+  </Card>
+  
+  <Card title="Good Habits" icon="check-circle">
+    **Content Creation:**
+    - Plan content before writing
+    - Use templates and checklists
+    - Test links before publishing
+    - Optimize images before upload
+    
+    **System Usage:**
+    - Use strong, unique passwords
+    - Don't share login credentials
+    - Report issues promptly
+    - Follow established workflows
+  </Card>
+</CardGroup>
+
+### Training and Education
+
+<Steps>
+  <Step title="Initial Training">
+    - Complete user onboarding process
+    - Review role-specific documentation
+    - Practice with test content
+    - Ask questions during training
+  </Step>
+
+  <Step title="Ongoing Learning">
+    - Attend refresher training sessions
+    - Stay updated on new features
+    - Share knowledge with colleagues
+    - Provide feedback on system improvements
+  </Step>
+
+  <Step title="Advanced Skills">
+    - Learn keyboard shortcuts
+    - Master advanced formatting
+    - Understand SEO best practices
+    - Develop content strategy skills
+  </Step>
+</Steps>
+
+## Troubleshooting Checklist
+
+Use this checklist when encountering any issue:
+
+<AccordionGroup>
+  <Accordion title="✅ Basic Troubleshooting Steps">
+    - [ ] Refresh the page (Ctrl+F5 or Cmd+Shift+R)
+    - [ ] Check internet connection
+    - [ ] Try different browser or incognito mode
+    - [ ] Clear browser cache and cookies
+    - [ ] Restart browser completely
+    - [ ] Check if others have the same issue
+    - [ ] Verify you're using correct login credentials
+    - [ ] Ensure you have necessary permissions
+    - [ ] Check for any error messages
+    - [ ] Note exact time and circumstances of issue
+  </Accordion>
+
+  <Accordion title="✅ Information to Collect">
+    - [ ] Exact error message text
+    - [ ] Screenshots of the problem
+    - [ ] Browser name and version
+    - [ ] Operating system
+    - [ ] Steps taken before issue occurred
+    - [ ] Whether issue is reproducible
+    - [ ] Time and date of issue
+    - [ ] Your user role and permissions
+    - [ ] Any recent changes made
+    - [ ] Network/connection information
+  </Accordion>
+
+  <Accordion title="✅ Before Contacting Support">
+    - [ ] Tried all basic troubleshooting steps
+    - [ ] Checked documentation for solutions
+    - [ ] Asked colleagues if they've seen similar issues
+    - [ ] Gathered all relevant information
+    - [ ] Prepared clear description of problem
+    - [ ] Identified urgency level of issue
+    - [ ] Chosen appropriate support channel
+    - [ ] Ready to provide additional information if requested
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  Most issues can be resolved quickly with basic troubleshooting. When in doubt, don't hesitate to ask for help - it's better to get assistance early than to struggle with a problem that has a simple solution.
+</Info>

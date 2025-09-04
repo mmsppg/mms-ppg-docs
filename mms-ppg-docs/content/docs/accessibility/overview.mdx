@@ -1,0 +1,723 @@
+---
+title: 'Accessibility Overview'
+description: 'Understanding web accessibility and why it matters for healthcare websites'
+---
+
+## What is Web Accessibility?
+
+Web accessibility means designing and creating websites that can be used by everyone, including people with disabilities. For a healthcare website like MMS PPG, accessibility isn't just good practice—it's essential for ensuring all patients can access vital health information and services.
+
+<img src="/images/accessibility/accessibility-overview.png" alt="Diverse group of people using various assistive technologies to access a website" />
+
+## Why Accessibility Matters
+
+### Legal Requirements
+
+<CardGroup cols={2}>
+  <Card title="UK Legislation" icon="scale-balanced">
+    **Equality Act 2010**
+    - Requires reasonable adjustments for disabled people
+    - Applies to service providers including healthcare
+    - Covers digital services and websites
+    
+    **Public Sector Bodies Regulations 2018**
+    - Mandatory accessibility standards for public sector
+    - WCAG 2.1 AA compliance required
+    - Regular accessibility statements needed
+  </Card>
+  
+  <Card title="Healthcare Standards" icon="hospital">
+    **NHS Digital Standards**
+    - Accessibility requirements for NHS services
+    - Patient-centered design principles
+    - Inclusive service delivery
+    
+    **Care Quality Commission**
+    - Considers accessibility in service ratings
+    - Expects reasonable adjustments
+    - Reviews patient access to information
+  </Card>
+</CardGroup>
+
+### Moral and Practical Benefits
+
+<AccordionGroup>
+  <Accordion title="🏥 Healthcare Equity">
+    **Equal Access to Health Information**
+    - 14.1 million disabled people in the UK
+    - Higher healthcare needs in disabled population
+    - Digital exclusion can worsen health inequalities
+    - Accessible websites ensure no one is left behind
+  </Accordion>
+
+  <Accordion title="👥 Broader User Benefits">
+    **Accessibility Helps Everyone**
+    - Older adults with age-related impairments
+    - People with temporary disabilities (broken arm, eye surgery)
+    - Users in challenging environments (bright sunlight, noisy spaces)
+    - People with limited digital literacy
+    - Non-native English speakers
+  </Accordion>
+
+  <Accordion title="💼 Business Benefits">
+    **Improved Service Delivery**
+    - Larger potential audience
+    - Better user experience for all
+    - Improved SEO and search rankings
+    - Reduced support requests
+    - Enhanced reputation and trust
+  </Accordion>
+</AccordionGroup>
+
+## Types of Disabilities and Barriers
+
+### Visual Impairments
+
+<Tabs>
+  <Tab title="Blindness">
+    **How Users Access Content:**
+    - Screen readers (software that reads content aloud)
+    - Braille displays
+    - Voice commands
+    
+    **Common Barriers:**
+    - Images without alt text
+    - Poor heading structure
+    - Unlabeled form fields
+    - Content that relies only on color
+    
+    **Solutions We Provide:**
+    - Descriptive alt text for all images
+    - Logical heading hierarchy
+    - Clear form labels
+    - Text descriptions for visual information
+  </Tab>
+
+  <Tab title="Low Vision">
+    **How Users Access Content:**
+    - Screen magnification software
+    - High contrast settings
+    - Large text sizes
+    - Custom color schemes
+    
+    **Common Barriers:**
+    - Small text that can't be enlarged
+    - Poor color contrast
+    - Complex layouts
+    - Text in images
+    
+    **Solutions We Provide:**
+    - Scalable text (up to 200% without horizontal scrolling)
+    - High contrast color schemes
+    - Clear, simple layouts
+    - Text alternatives to images with text
+  </Tab>
+
+  <Tab title="Color Blindness">
+    **Types:**
+    - Red-green color blindness (most common)
+    - Blue-yellow color blindness
+    - Complete color blindness (rare)
+    
+    **Common Barriers:**
+    - Information conveyed only through color
+    - Poor color combinations
+    - Red/green status indicators
+    
+    **Solutions We Provide:**
+    - Color plus text/symbols for information
+    - High contrast color combinations
+    - Multiple ways to convey status
+  </Tab>
+</Tabs>
+
+### Hearing Impairments
+
+<CardGroup cols={2}>
+  <Card title="Deaf Users" icon="deaf">
+    **Needs:**
+    - Captions for video content
+    - Sign language interpretation
+    - Visual alerts instead of audio
+    - Clear, simple language
+    
+    **Our Solutions:**
+    - Captions for all video content
+    - Visual indicators for important information
+    - Clear, jargon-free writing
+    - Multiple contact methods
+  </Card>
+  
+  <Card title="Hard of Hearing" icon="volume-low">
+    **Needs:**
+    - Adjustable audio levels
+    - Captions as backup
+    - Visual reinforcement of audio cues
+    - Clear audio quality
+    
+    **Our Solutions:**
+    - No auto-playing audio
+    - Captions available for all audio
+    - Visual alternatives to audio alerts
+    - High-quality audio when used
+  </Card>
+</CardGroup>
+
+### Motor Impairments
+
+<AccordionGroup>
+  <Accordion title="🖱️ Limited Mouse Use">
+    **Conditions:**
+    - Arthritis, tremors, paralysis
+    - Missing limbs or digits
+    - Temporary injuries
+    
+    **Barriers:**
+    - Small click targets
+    - Drag-and-drop interfaces
+    - Time-limited interactions
+    - Hover-only menus
+    
+    **Our Solutions:**
+    - Large click targets (minimum 44px)
+    - Keyboard alternatives to all mouse actions
+    - No time limits on interactions
+    - Click-to-open menus
+  </Accordion>
+
+  <Accordion title="⌨️ Keyboard-Only Navigation">
+    **How Users Navigate:**
+    - Tab key to move between elements
+    - Enter/Space to activate buttons
+    - Arrow keys for menus and lists
+    - Escape to close dialogs
+    
+    **Requirements:**
+    - All interactive elements must be keyboard accessible
+    - Visible focus indicators
+    - Logical tab order
+    - Keyboard shortcuts for common actions
+    
+    **Our Implementation:**
+    - Full keyboard navigation support
+    - Clear focus indicators
+    - Skip links for efficient navigation
+    - Consistent keyboard behavior
+  </Accordion>
+</AccordionGroup>
+
+### Cognitive Impairments
+
+<Tabs>
+  <Tab title="Learning Disabilities">
+    **Conditions:**
+    - Dyslexia, ADHD, autism
+    - Memory impairments
+    - Processing difficulties
+    
+    **Needs:**
+    - Simple, clear language
+    - Consistent navigation
+    - Minimal distractions
+    - Multiple ways to find information
+    
+    **Our Approach:**
+    - Plain English throughout
+    - Consistent page layouts
+    - Clear headings and structure
+    - Search and navigation options
+  </Tab>
+
+  <Tab title="Memory Issues">
+    **Challenges:**
+    - Remembering complex instructions
+    - Multi-step processes
+    - Navigation paths
+    - Form completion
+    
+    **Solutions:**
+    - Step-by-step guidance
+    - Progress indicators
+    - Breadcrumb navigation
+    - Form field help text
+    - Save progress functionality
+  </Tab>
+
+  <Tab title="Attention Difficulties">
+    **Barriers:**
+    - Moving or flashing content
+    - Auto-playing media
+    - Complex layouts
+    - Too much information at once
+    
+    **Our Design:**
+    - Static, calm interfaces
+    - No auto-playing content
+    - Clean, focused layouts
+    - Information in digestible chunks
+  </Tab>
+</Tabs>
+
+## WCAG 2.1 Guidelines
+
+### The Four Principles
+
+<CardGroup cols={2}>
+  <Card title="Perceivable" icon="eye">
+    **Information must be presentable in ways users can perceive**
+    
+    - Text alternatives for images
+    - Captions for videos
+    - Sufficient color contrast
+    - Resizable text
+    - Multiple sensory channels
+  </Card>
+  
+  <Card title="Operable" icon="hand">
+    **Interface components must be operable**
+    
+    - Keyboard accessible
+    - No seizure-inducing content
+    - Sufficient time for reading
+    - Clear navigation
+    - Input assistance
+  </Card>
+  
+  <Card title="Understandable" icon="brain">
+    **Information and UI operation must be understandable**
+    
+    - Readable text
+    - Predictable functionality
+    - Input assistance
+    - Error identification
+    - Consistent navigation
+  </Card>
+  
+  <Card title="Robust" icon="shield">
+    **Content must be robust enough for various assistive technologies**
+    
+    - Valid HTML code
+    - Compatible with assistive technologies
+    - Future-proof markup
+    - Semantic structure
+    - Progressive enhancement
+  </Card>
+</CardGroup>
+
+### Conformance Levels
+
+<Tabs>
+  <Tab title="Level A (Minimum)">
+    **Basic accessibility features**
+    - Images have alt text
+    - Videos have captions
+    - Content is keyboard accessible
+    - Page has proper headings
+    
+    **Not sufficient for healthcare websites**
+  </Tab>
+
+  <Tab title="Level AA (Standard)">
+    **Enhanced accessibility - our target level**
+    - 4.5:1 color contrast ratio
+    - Text can resize to 200%
+    - Focus indicators are visible
+    - Error messages are clear
+    - Content is organized logically
+    
+    **Recommended for most websites**
+  </Tab>
+
+  <Tab title="Level AAA (Enhanced)">
+    **Highest level of accessibility**
+    - 7:1 color contrast ratio
+    - Sign language interpretation
+    - Context-sensitive help
+    - No time limits
+    
+    **Difficult to achieve for entire websites**
+  </Tab>
+</Tabs>
+
+## Assistive Technologies
+
+### Screen Readers
+
+<img src="/images/accessibility/screen-reader-demo.png" alt="Screenshot of a screen reader interface showing content being read aloud" />
+
+**Popular Screen Readers:**
+- **NVDA** (Windows, free)
+- **JAWS** (Windows, commercial)
+- **VoiceOver** (Mac/iOS, built-in)
+- **TalkBack** (Android, built-in)
+
+**How They Work:**
+- Read content aloud using synthesized speech
+- Navigate by headings, links, and landmarks
+- Announce form labels and instructions
+- Describe images using alt text
+
+**What This Means for Content:**
+- Proper heading structure is crucial
+- Alt text must be descriptive
+- Form labels must be clear
+- Link text must be meaningful
+
+### Keyboard Navigation
+
+<AccordionGroup>
+  <Accordion title="⌨️ Common Keyboard Commands">
+    **Basic Navigation:**
+    - `Tab` - Move to next interactive element
+    - `Shift + Tab` - Move to previous element
+    - `Enter` - Activate buttons and links
+    - `Space` - Activate buttons, check boxes
+    - `Arrow keys` - Navigate within menus and lists
+    - `Escape` - Close dialogs and menus
+  </Accordion>
+
+  <Accordion title="🎯 Focus Management">
+    **Visible Focus Indicators:**
+    - Clear outline around focused element
+    - High contrast focus rings
+    - Consistent focus styling
+    
+    **Logical Tab Order:**
+    - Left to right, top to bottom
+    - Skip repetitive navigation
+    - Focus moves to opened content
+  </Accordion>
+</AccordionGroup>
+
+### Voice Control
+
+<CardGroup cols={2}>
+  <Card title="Dragon NaturallySpeaking" icon="microphone">
+    **Commercial voice control software**
+    - Dictate text content
+    - Navigate by voice commands
+    - Click elements by name
+    - Requires proper labeling
+  </Card>
+  
+  <Card title="Voice Control (iOS/macOS)" icon="apple">
+    **Built-in voice control**
+    - "Click [button name]"
+    - "Show numbers" for unlabeled elements
+    - Grid navigation system
+    - Works with proper accessibility markup
+  </Card>
+</CardGroup>
+
+## Testing for Accessibility
+
+### Automated Testing Tools
+
+<Tabs>
+  <Tab title="Browser Extensions">
+    **axe DevTools** (Free)
+    - Comprehensive accessibility scanning
+    - Detailed issue explanations
+    - Remediation guidance
+    - Integration with development tools
+    
+    **WAVE** (Free)
+    - Visual accessibility evaluation
+    - Inline error reporting
+    - Color contrast analysis
+    - Structure visualization
+  </Tab>
+
+  <Tab title="Online Tools">
+    **WebAIM WAVE**
+    - Enter URL for instant analysis
+    - Visual feedback on page
+    - Detailed error descriptions
+    - Free to use
+    
+    **Lighthouse Accessibility Audit**
+    - Built into Chrome DevTools
+    - Automated accessibility scoring
+    - Performance and SEO included
+    - Actionable recommendations
+  </Tab>
+
+  <Tab title="Color Contrast Checkers">
+    **WebAIM Contrast Checker**
+    - Test foreground/background colors
+    - WCAG compliance levels
+    - Suggestions for improvement
+    
+    **Colour Contrast Analyser**
+    - Desktop application
+    - Eyedropper tool for testing
+    - Real-time contrast ratios
+  </Tab>
+</Tabs>
+
+### Manual Testing
+
+<Steps>
+  <Step title="Keyboard Navigation Test">
+    1. Unplug your mouse or don't use it
+    2. Navigate the entire website using only keyboard
+    3. Check that all interactive elements are reachable
+    4. Verify focus indicators are visible
+    5. Ensure logical tab order
+  </Step>
+  
+  <Step title="Screen Reader Test">
+    1. Turn on screen reader (VoiceOver on Mac, NVDA on Windows)
+    2. Close your eyes or turn off monitor
+    3. Navigate using screen reader commands
+    4. Check that content makes sense when read aloud
+    5. Verify all images have appropriate alt text
+  </Step>
+  
+  <Step title="Zoom Test">
+    1. Increase browser zoom to 200%
+    2. Check that all content is still visible
+    3. Verify no horizontal scrolling is required
+    4. Ensure all functionality still works
+    5. Test on mobile devices too
+  </Step>
+  
+  <Step title="Color and Contrast Test">
+    1. Use a color contrast checker on all text
+    2. Test with different color blindness simulations
+    3. Check that information isn't conveyed by color alone
+    4. Verify sufficient contrast for all text sizes
+  </Step>
+</Steps>
+
+## Accessibility in Healthcare Context
+
+### Patient-Specific Considerations
+
+<AccordionGroup>
+  <Accordion title="🏥 Health Literacy">
+    **Challenges:**
+    - Complex medical terminology
+    - Multiple languages spoken
+    - Varying education levels
+    - Stress and anxiety affecting comprehension
+    
+    **Our Approach:**
+    - Plain English explanations
+    - Glossary of medical terms
+    - Multiple language support
+    - Clear, step-by-step instructions
+  </Accordion>
+
+  <Accordion title="👴 Aging Population">
+    **Age-Related Changes:**
+    - Declining vision and hearing
+    - Reduced motor control
+    - Slower processing speed
+    - Less familiarity with technology
+    
+    **Design Considerations:**
+    - Larger text and buttons
+    - High contrast colors
+    - Simple, consistent navigation
+    - Patient, forgiving interfaces
+  </Accordion>
+
+  <Accordion title="🧠 Cognitive Load in Healthcare">
+    **Stress Factors:**
+    - Health anxiety and worry
+    - Complex treatment information
+    - Multiple appointments and requirements
+    - Financial concerns
+    
+    **Supportive Design:**
+    - Clear, calming visual design
+    - Step-by-step guidance
+    - Progress indicators
+    - Easy-to-find contact information
+  </Accordion>
+</AccordionGroup>
+
+### Emergency Information Accessibility
+
+<CardGroup cols={2}>
+  <Card title="Crisis Situations" icon="exclamation-triangle">
+    **Requirements:**
+    - Immediate access to emergency numbers
+    - Clear, simple language
+    - Multiple contact methods
+    - Visual prominence of urgent information
+    
+    **Implementation:**
+    - Emergency banner at top of every page
+    - Large, high-contrast emergency numbers
+    - Simple, direct language
+    - Multiple ways to contact (phone, text, online)
+  </Card>
+  
+  <Card title="Out-of-Hours Information" icon="clock">
+    **Needs:**
+    - Clear opening hours
+    - Alternative contact methods
+    - Emergency vs. non-emergency guidance
+    - Location and directions
+    
+    **Our Approach:**
+    - Prominent hours display
+    - Clear emergency contact information
+    - Guidance on when to call 111 vs. 999
+    - Easy-to-find practice location
+  </Card>
+</CardGroup>
+
+## Creating Accessible Content
+
+### Writing Guidelines
+
+<Tabs>
+  <Tab title="Plain English">
+    **Principles:**
+    - Use everyday words instead of jargon
+    - Keep sentences short (15-20 words)
+    - Use active voice
+    - Explain technical terms when necessary
+    
+    **Examples:**
+    ✅ "Book an appointment online or call us"
+    ❌ "Utilize our digital booking platform or contact our reception team"
+    
+    ✅ "Your GP will examine you and discuss treatment options"
+    ❌ "The practitioner will conduct a comprehensive assessment and review therapeutic interventions"
+  </Tab>
+
+  <Tab title="Structure and Organization">
+    **Heading Hierarchy:**
+    - Use headings to organize content
+    - Don't skip heading levels
+    - Make headings descriptive
+    - Use only one H1 per page
+    
+    **Lists and Bullets:**
+    - Use lists for related items
+    - Keep list items parallel in structure
+    - Use numbered lists for sequences
+    - Limit to 7-9 items per list
+  </Tab>
+
+  <Tab title="Links and Navigation">
+    **Link Text:**
+    - Make link text descriptive
+    - Avoid "click here" or "read more"
+    - Indicate if link opens new window
+    - Use consistent link styling
+    
+    **Examples:**
+    ✅ "Read our privacy policy"
+    ✅ "Book an appointment (opens in new window)"
+    ❌ "Click here"
+    ❌ "More info"
+  </Tab>
+</Tabs>
+
+### Image Accessibility
+
+<Steps>
+  <Step title="Determine Image Purpose">
+    **Informative Images:** Convey important information
+    **Decorative Images:** Purely visual, no information
+    **Functional Images:** Part of a link or button
+    **Complex Images:** Charts, graphs, diagrams
+  </Step>
+  
+  <Step title="Write Appropriate Alt Text">
+    **For Informative Images:**
+    - Describe what the image shows
+    - Include relevant context
+    - Keep it concise but complete
+    
+    **For Decorative Images:**
+    - Use empty alt text (alt="")
+    - Don't describe purely decorative elements
+    
+    **For Functional Images:**
+    - Describe the function, not the image
+    - "Search" not "Magnifying glass icon"
+  </Step>
+  
+  <Step title="Handle Complex Images">
+    **Charts and Graphs:**
+    - Provide data in table format
+    - Include trend descriptions
+    - Offer alternative formats
+    
+    **Diagrams:**
+    - Describe the process or relationship
+    - Use structured text alternatives
+    - Consider audio descriptions
+  </Step>
+</Steps>
+
+## Accessibility Statement
+
+### Legal Requirements
+
+<AccordionGroup>
+  <Accordion title="📋 Required Content">
+    **Accessibility Statement Must Include:**
+    - Conformance level (WCAG 2.1 AA)
+    - Known accessibility issues
+    - Alternative access methods
+    - Contact information for accessibility feedback
+    - Date of last review
+  </Accordion>
+
+  <Accordion title="🔄 Regular Updates">
+    **Update Schedule:**
+    - Review every 12 months minimum
+    - Update when significant changes made
+    - Address reported accessibility issues
+    - Document improvements and fixes
+  </Accordion>
+</AccordionGroup>
+
+### Our Commitment
+
+<Card title="MMS PPG Accessibility Commitment" icon="heart">
+We are committed to ensuring our website is accessible to all patients and community members. We:
+
+- Follow WCAG 2.1 AA guidelines
+- Regularly test with assistive technologies
+- Welcome feedback on accessibility issues
+- Continuously improve our accessibility
+- Provide alternative ways to access information
+- Train our staff on accessibility best practices
+
+**Contact us about accessibility:**
+- Email: accessibility@mmsppg.org
+- Phone: [Practice number]
+- In person: Speak to reception staff
+</Card>
+
+## Next Steps
+
+<Steps>
+  <Step title="Learn Content Guidelines">
+    Read our detailed guides on creating accessible content for different content types
+  </Step>
+  
+  <Step title="Practice Accessibility Testing">
+    Try using keyboard navigation and screen readers on our website
+  </Step>
+  
+  <Step title="Apply Guidelines">
+    Use accessibility principles when creating new content
+  </Step>
+  
+  <Step title="Seek Feedback">
+    Ask users with disabilities to test and provide feedback on content
+  </Step>
+</Steps>
+
+<Info>
+  Accessibility is not a one-time task but an ongoing commitment. Every piece of content we create should be accessible to all users.
+</Info>

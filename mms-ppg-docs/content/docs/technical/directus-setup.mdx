@@ -1,0 +1,1332 @@
+---
+title: 'Directus CMS Setup'
+description: 'Complete technical guide for setting up and configuring Directus CMS for the MMS PPG website'
+---
+
+## Overview
+
+This guide covers the complete setup and configuration of Directus CMS for the MMS PPG website. Directus serves as the headless content management system, providing a powerful admin interface for content creators while delivering content via API to the Next.js frontend.
+
+<img src="/images/technical/directus-architecture.png" alt="Directus CMS architecture diagram showing admin interface, API, and frontend connections" />
+
+## System Requirements
+
+### Server Requirements
+
+<CardGroup cols={2}>
+  <Card title="Minimum Requirements" icon="server">
+    - **CPU**: 1 vCPU
+    - **RAM**: 512MB
+    - **Storage**: 1GB SSD
+    - **Node.js**: 18.x or higher
+    - **Database**: PostgreSQL 12+, MySQL 8+, or SQLite
+  </Card>
+  
+  <Card title="Recommended Requirements" icon="rocket">
+    - **CPU**: 2+ vCPUs
+    - **RAM**: 2GB+
+    - **Storage**: 10GB+ SSD
+    - **Node.js**: 20.x LTS
+    - **Database**: PostgreSQL 15+
+    - **CDN**: Cloudflare or similar
+  </Card>
+</CardGroup>
+
+### Development Environment
+
+<Tabs>
+  <Tab title="Local Development">
+    **Prerequisites:**
+    - Node.js 18+ installed
+    - npm or yarn package manager
+    - Git for version control
+    - Code editor (VS Code recommended)
+    
+    **Optional Tools:**
+    - Docker for containerized development
+    - PostgreSQL for local database
+    - Postman for API testing
+  </Tab>
+
+  <Tab title="Production Environment">
+    **Hosting Options:**
+    - **Directus Cloud** (recommended for simplicity)
+    - **Self-hosted VPS** (DigitalOcean, Linode, AWS)
+    - **Platform-as-a-Service** (Railway, Render, Heroku)
+    
+    **Database Options:**
+    - **PostgreSQL** (recommended for production)
+    - **MySQL/MariaDB** (good alternative)
+    - **SQLite** (development only)
+  </Tab>
+</Tabs>
+
+## Installation Methods
+
+### Method 1: Directus Cloud (Recommended)
+
+<Steps>
+  <Step title="Create Directus Cloud Account">
+    1. Go to [directus.cloud](https://directus.cloud)
+    2. Sign up for a new account
+    3. Choose your subscription plan
+    4. Select your preferred region (Europe for UK users)
+    
+    <img src="/images/technical/directus-cloud-signup.png" alt="Directus Cloud signup form" />
+  </Step>
+
+  <Step title="Create New Project">
+    1. Click "Create Project" in your dashboard
+    2. Choose a project name (e.g., "mms-ppg-cms")
+    3. Select your region and database type
+    4. Wait for project provisioning (2-5 minutes)
+    
+    <img src="/images/technical/directus-cloud-project.png" alt="Directus Cloud project creation interface" />
+  </Step>
+
+  <Step title="Access Your Instance">
+    1. Note your project URL (e.g., `https://your-project.directus.app`)
+    2. Use the provided admin credentials to log in
+    3. Change the default admin password immediately
+    4. Configure your project settings
+  </Step>
+
+  <Step title="Generate API Token">
+    1. Go to Settings → Access Tokens
+    2. Create a new token with appropriate permissions
+    3. Copy the token for use in your frontend application
+    4. Store the token securely
+    
+    <img src="/images/technical/directus-api-token.png" alt="API token generation interface" />
+  </Step>
+</Steps>
+
+### Method 2: Self-Hosted Installation
+
+<Steps>
+  <Step title="Install Directus">
+    ```bash
+    # Create new Directus project
+    npm create directus-project@latest mms-ppg-cms
+    
+    # Navigate to project directory
+    cd mms-ppg-cms
+    
+    # Install dependencies
+    npm install
+    ```
+  </Step>
+
+  <Step title="Configure Environment">
+    Create a `.env` file with your configuration:
+    
+    ```env
+    # Database Configuration
+    DB_CLIENT="pg"
+    DB_HOST="localhost"
+    DB_PORT="5432"
+    DB_DATABASE="directus_mms_ppg"
+    DB_USER="directus"
+    DB_PASSWORD="your_secure_password"
+    
+    # Directus Configuration
+    KEY="your-secret-key-here"
+    SECRET="your-secret-here"
+    
+    # Admin User
+    ADMIN_EMAIL="admin@mmsppg.org"
+    ADMIN_PASSWORD="secure_admin_password"
+    
+    # File Storage
+    STORAGE_LOCATIONS="local"
+    STORAGE_LOCAL_DRIVER="local"
+    STORAGE_LOCAL_ROOT="./uploads"
+    
+    # Email Configuration (optional)
+    EMAIL_FROM="noreply@mmsppg.org"
+    EMAIL_TRANSPORT="smtp"
+    EMAIL_SMTP_HOST="smtp.gmail.com"
+    EMAIL_SMTP_PORT="587"
+    EMAIL_SMTP_USER="your-email@gmail.com"
+    EMAIL_SMTP_PASSWORD="your-app-password"
+    ```
+  </Step>
+
+  <Step title="Initialize Database">
+    ```bash
+    # Run database migrations
+    npx directus database migrate:latest
+    
+    # Create admin user
+    npx directus users create --email admin@mmsppg.org --password secure_password --role administrator
+    ```
+  </Step>
+
+  <Step title="Start Directus">
+    ```bash
+    # Development mode
+    npm run dev
+    
+    # Production mode
+    npm start
+    ```
+    
+    Access your Directus instance at `http://localhost:8055`
+  </Step>
+</Steps>
+
+### Method 3: Docker Installation
+
+<Steps>
+  <Step title="Create Docker Compose File">
+    Create `docker-compose.yml`:
+    
+    ```yaml
+    version: '3.8'
+    
+    services:
+      directus:
+        image: directus/directus:latest
+        ports:
+          - "8055:8055"
+        volumes:
+          - directus_data:/directus/uploads
+          - directus_extensions:/directus/extensions
+        environment:
+          KEY: "replace-with-random-value"
+          SECRET: "replace-with-random-value"
+          DB_CLIENT: "pg"
+          DB_HOST: "postgres"
+          DB_PORT: "5432"
+          DB_DATABASE: "directus"
+          DB_USER: "directus"
+          DB_PASSWORD: "directus"
+          ADMIN_EMAIL: "admin@mmsppg.org"
+          ADMIN_PASSWORD: "secure_password"
+        depends_on:
+          - postgres
+    
+      postgres:
+        image: postgres:15
+        environment:
+          POSTGRES_DB: "directus"
+          POSTGRES_USER: "directus"
+          POSTGRES_PASSWORD: "directus"
+        volumes:
+          - postgres_data:/var/lib/postgresql/data
+    
+    volumes:
+      directus_data:
+      directus_extensions:
+      postgres_data:
+    ```
+  </Step>
+
+  <Step title="Start Services">
+    ```bash
+    # Start all services
+    docker-compose up -d
+    
+    # View logs
+    docker-compose logs -f directus
+    
+    # Stop services
+    docker-compose down
+    ```
+  </Step>
+</Steps>
+
+## Initial Configuration
+
+### Admin Interface Setup
+
+<Steps>
+  <Step title="First Login">
+    1. Navigate to your Directus admin URL
+    2. Log in with your admin credentials
+    3. Complete the initial setup wizard
+    4. Configure your profile and preferences
+    
+    <img src="/images/technical/directus-first-login.png" alt="Directus admin login screen" />
+  </Step>
+
+  <Step title="Project Settings">
+    Go to Settings → Project Settings and configure:
+    
+    **Project Information:**
+    - Project Name: "MMS PPG Website"
+    - Project Descriptor: "Content Management System"
+    - Project Color: `#7CB342` (PPG Green)
+    - Default Language: English (UK)
+    
+    **Project Logo:**
+    - Upload PPG logo for admin interface
+    - Set favicon for browser tabs
+    
+    <img src="/images/technical/directus-project-settings.png" alt="Project settings configuration screen" />
+  </Step>
+
+  <Step title="Security Settings">
+    Configure security options:
+    
+    **Authentication:**
+    - Enable two-factor authentication
+    - Set session timeout (recommended: 1 hour)
+    - Configure password policies
+    
+    **CORS Settings:**
+    - Add your website domain to allowed origins
+    - Configure for development and production URLs
+    
+    **Rate Limiting:**
+    - Enable rate limiting for API endpoints
+    - Set appropriate limits for your usage
+  </Step>
+</Steps>
+
+### Database Schema Setup
+
+<AccordionGroup>
+  <Accordion title="📝 Blog Posts Collection">
+    **Collection Configuration:**
+    ```json
+    {
+      "collection": "blog_posts",
+      "meta": {
+        "collection": "blog_posts",
+        "icon": "article",
+        "note": "Blog posts and news articles",
+        "display_template": "{{title}}",
+        "hidden": false,
+        "singleton": false,
+        "sort_field": "published_date"
+      }
+    }
+    ```
+    
+    **Fields to Create:**
+    - `id` (UUID, Primary Key)
+    - `title` (String, Required)
+    - `slug` (String, Required, Unique)
+    - `content` (Text, Rich Text Editor)
+    - `excerpt` (Text, Textarea)
+    - `featured_image` (File Relation)
+    - `author` (String)
+    - `published_date` (DateTime)
+    - `status` (Select: draft, in_review, published)
+    - `category` (String)
+    - `meta_title` (String)
+    - `meta_description` (Text)
+    - `user_created` (User Relation, System)
+    - `date_created` (DateTime, System)
+    - `user_updated` (User Relation, System)
+    - `date_updated` (DateTime, System)
+  </Accordion>
+
+  <Accordion title="📅 Events Collection">
+    **Collection Configuration:**
+    ```json
+    {
+      "collection": "events",
+      "meta": {
+        "collection": "events",
+        "icon": "event",
+        "note": "Community events and meetings",
+        "display_template": "{{title}} - {{event_date}}",
+        "sort_field": "event_date"
+      }
+    }
+    ```
+    
+    **Fields to Create:**
+    - `id` (UUID, Primary Key)
+    - `title` (String, Required)
+    - `slug` (String, Required, Unique)
+    - `description` (Text, Rich Text Editor)
+    - `event_date` (Date, Required)
+    - `event_time` (Time)
+    - `location` (String)
+    - `featured_image` (File Relation)
+    - `registration_required` (Boolean, Default: false)
+    - `registration_url` (String)
+    - `status` (Select: draft, in_review, published)
+    - `category` (String)
+    - `contact_email` (String)
+    - `contact_phone` (String)
+    - System fields (user_created, date_created, etc.)
+  </Accordion>
+
+  <Accordion title="📄 Pages Collection">
+    **Collection Configuration:**
+    ```json
+    {
+      "collection": "pages",
+      "meta": {
+        "collection": "pages",
+        "icon": "description",
+        "note": "Static pages like About, Contact, etc.",
+        "display_template": "{{title}}",
+        "sort_field": "title"
+      }
+    }
+    ```
+    
+    **Fields to Create:**
+    - `id` (UUID, Primary Key)
+    - `title` (String, Required)
+    - `slug` (String, Required, Unique)
+    - `content` (Text, Rich Text Editor)
+    - `meta_title` (String)
+    - `meta_description` (Text)
+    - `featured_image` (File Relation)
+    - `status` (Select: draft, published)
+    - `show_in_navigation` (Boolean, Default: false)
+    - `navigation_order` (Integer)
+    - System fields
+  </Accordion>
+
+  <Accordion title="🏥 Services Collection">
+    **Collection Configuration:**
+    ```json
+    {
+      "collection": "services",
+      "meta": {
+        "collection": "services",
+        "icon": "medical_services",
+        "note": "Healthcare services offered",
+        "display_template": "{{name}}",
+        "sort_field": "name"
+      }
+    }
+    ```
+    
+    **Fields to Create:**
+    - `id` (UUID, Primary Key)
+    - `name` (String, Required)
+    - `slug` (String, Required, Unique)
+    - `description` (Text, Rich Text Editor)
+    - `short_description` (Text)
+    - `category` (String)
+    - `location` (String)
+    - `contact_info` (JSON)
+    - `opening_hours` (JSON)
+    - `featured_image` (File Relation)
+    - `status` (Select: draft, published)
+    - `featured` (Boolean, Default: false)
+    - System fields
+  </Accordion>
+
+  <Accordion title="🤝 Partners Collection">
+    **Collection Configuration:**
+    ```json
+    {
+      "collection": "partners",
+      "meta": {
+        "collection": "partners",
+        "icon": "handshake",
+        "note": "Partner organizations",
+        "display_template": "{{name}}",
+        "sort_field": "name"
+      }
+    }
+    ```
+    
+    **Fields to Create:**
+    - `id` (UUID, Primary Key)
+    - `name` (String, Required)
+    - `slug` (String, Required, Unique)
+    - `description` (Text)
+    - `website_url` (String)
+    - `logo` (File Relation)
+    - `contact_email` (String)
+    - `contact_phone` (String)
+    - `address` (Text)
+    - `partnership_type` (String)
+    - `status` (Select: draft, published)
+    - `featured` (Boolean, Default: false)
+    - System fields
+  </Accordion>
+</AccordionGroup>
+
+## User Roles and Permissions
+
+### Creating User Roles
+
+<Steps>
+  <Step title="Content Creator Role">
+    **Role Configuration:**
+    - Name: "Content Creator"
+    - Description: "Can create and edit content, submit for review"
+    - Icon: "edit"
+    - Admin Access: No
+    - App Access: Yes
+    
+    **Permissions:**
+    ```json
+    {
+      "blog_posts": {
+        "create": "full",
+        "read": "full", 
+        "update": "mine",
+        "delete": "mine_draft_only"
+      },
+      "events": {
+        "create": "full",
+        "read": "full",
+        "update": "mine", 
+        "delete": "mine_draft_only"
+      },
+      "directus_files": {
+        "create": "full",
+        "read": "full",
+        "update": "mine",
+        "delete": "mine"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Content Reviewer Role">
+    **Role Configuration:**
+    - Name: "Content Reviewer"
+    - Description: "Can review and approve content for publication"
+    - Icon: "fact_check"
+    - Admin Access: No
+    - App Access: Yes
+    
+    **Permissions:**
+    ```json
+    {
+      "blog_posts": {
+        "create": "none",
+        "read": "full",
+        "update": "status_and_comments_only",
+        "delete": "none"
+      },
+      "events": {
+        "create": "none", 
+        "read": "full",
+        "update": "status_and_comments_only",
+        "delete": "none"
+      },
+      "content_reviews": {
+        "create": "full",
+        "read": "full", 
+        "update": "mine",
+        "delete": "none"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Content Publisher Role">
+    **Role Configuration:**
+    - Name: "Content Publisher"
+    - Description: "Can publish approved content and manage site content"
+    - Icon: "publish"
+    - Admin Access: No
+    - App Access: Yes
+    - Enforce 2FA: Yes
+    
+    **Permissions:**
+    ```json
+    {
+      "blog_posts": {
+        "create": "full",
+        "read": "full",
+        "update": "full", 
+        "delete": "full"
+      },
+      "events": {
+        "create": "full",
+        "read": "full",
+        "update": "full",
+        "delete": "full"
+      },
+      "pages": {
+        "create": "full",
+        "read": "full", 
+        "update": "full",
+        "delete": "full"
+      },
+      "site_settings": {
+        "create": "none",
+        "read": "full",
+        "update": "full",
+        "delete": "none"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Public API Role">
+    **Role Configuration:**
+    - Name: "Public API"
+    - Description: "Read-only access for website frontend"
+    - Icon: "api"
+    - Admin Access: No
+    - App Access: No
+    
+    **Permissions:**
+    ```json
+    {
+      "blog_posts": {
+        "create": "none",
+        "read": "published_only",
+        "update": "none",
+        "delete": "none"
+      },
+      "events": {
+        "create": "none",
+        "read": "published_only", 
+        "update": "none",
+        "delete": "none"
+      },
+      "pages": {
+        "create": "none",
+        "read": "published_only",
+        "update": "none", 
+        "delete": "none"
+      },
+      "directus_files": {
+        "create": "none",
+        "read": "full",
+        "update": "none",
+        "delete": "none"
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+### Permission Filters
+
+<AccordionGroup>
+  <Accordion title="🔒 Published Content Filter">
+    **Use Case:** Restrict API access to published content only
+    
+    **Filter Configuration:**
+    ```json
+    {
+      "status": {
+        "_eq": "published"
+      }
+    }
+    ```
+    
+    **Applied To:**
+    - Public API role
+    - Website frontend requests
+    - Search indexing
+  </Accordion>
+
+  <Accordion title="👤 User-Owned Content Filter">
+    **Use Case:** Users can only edit their own content
+    
+    **Filter Configuration:**
+    ```json
+    {
+      "user_created": {
+        "_eq": "$CURRENT_USER"
+      }
+    }
+    ```
+    
+    **Applied To:**
+    - Content Creator update permissions
+    - Content Creator delete permissions
+    - File management permissions
+  </Accordion>
+
+  <Accordion title="📝 Draft-Only Delete Filter">
+    **Use Case:** Users can only delete their own draft content
+    
+    **Filter Configuration:**
+    ```json
+    {
+      "_and": [
+        {
+          "user_created": {
+            "_eq": "$CURRENT_USER"
+          }
+        },
+        {
+          "status": {
+            "_eq": "draft"
+          }
+        }
+      ]
+    }
+    ```
+    
+    **Applied To:**
+    - Content Creator delete permissions
+    - Prevents deletion of published content
+  </Accordion>
+</AccordionGroup>
+
+## API Configuration
+
+### REST API Setup
+
+<Tabs>
+  <Tab title="Basic Configuration">
+    **API Endpoint Structure:**
+    ```
+    GET    /items/blog_posts          # List all blog posts
+    GET    /items/blog_posts/{id}     # Get specific blog post
+    POST   /items/blog_posts          # Create new blog post
+    PATCH  /items/blog_posts/{id}     # Update blog post
+    DELETE /items/blog_posts/{id}     # Delete blog post
+    ```
+    
+    **Common Query Parameters:**
+    - `fields`: Select specific fields
+    - `filter`: Filter results
+    - `sort`: Sort results
+    - `limit`: Limit number of results
+    - `offset`: Pagination offset
+    - `meta`: Include metadata
+  </Tab>
+
+  <Tab title="Authentication">
+    **Static Token Authentication:**
+    ```bash
+    curl -H "Authorization: Bearer YOUR_TOKEN" \
+         https://your-directus.app/items/blog_posts
+    ```
+    
+    **Temporary Token Authentication:**
+    ```bash
+    # Login to get temporary token
+    curl -X POST https://your-directus.app/auth/login \
+         -H "Content-Type: application/json" \
+         -d '{"email":"user@example.com","password":"password"}'
+    
+    # Use temporary token
+    curl -H "Authorization: Bearer TEMP_TOKEN" \
+         https://your-directus.app/items/blog_posts
+    ```
+  </Tab>
+
+  <Tab title="Query Examples">
+    **Get Published Blog Posts:**
+    ```
+    GET /items/blog_posts?filter[status][_eq]=published&sort=-published_date
+    ```
+    
+    **Get Blog Post with Featured Image:**
+    ```
+    GET /items/blog_posts/123?fields=*,featured_image.*
+    ```
+    
+    **Search Blog Posts:**
+    ```
+    GET /items/blog_posts?filter[title][_contains]=health&filter[status][_eq]=published
+    ```
+    
+    **Get Upcoming Events:**
+    ```
+    GET /items/events?filter[event_date][_gte]=$NOW&filter[status][_eq]=published&sort=event_date
+    ```
+  </Tab>
+</Tabs>
+
+### GraphQL API Setup
+
+<Steps>
+  <Step title="Enable GraphQL">
+    GraphQL is enabled by default in Directus. Access it at:
+    ```
+    https://your-directus.app/graphql
+    ```
+  </Step>
+
+  <Step title="GraphQL Schema">
+    **Query Structure:**
+    ```graphql
+    type Query {
+      blog_posts(
+        filter: blog_posts_filter
+        sort: [String]
+        limit: Int
+        offset: Int
+      ): [blog_posts]
+      
+      blog_posts_by_id(id: ID!): blog_posts
+      
+      events(
+        filter: events_filter
+        sort: [String]
+        limit: Int
+        offset: Int
+      ): [events]
+    }
+    ```
+  </Step>
+
+  <Step title="Example Queries">
+    **Get Published Blog Posts:**
+    ```graphql
+    query GetBlogPosts {
+      blog_posts(
+        filter: { status: { _eq: "published" } }
+        sort: ["-published_date"]
+        limit: 10
+      ) {
+        id
+        title
+        slug
+        excerpt
+        published_date
+        featured_image {
+          id
+          filename_download
+          title
+        }
+        author
+      }
+    }
+    ```
+    
+    **Get Event Details:**
+    ```graphql
+    query GetEvent($id: ID!) {
+      events_by_id(id: $id) {
+        id
+        title
+        description
+        event_date
+        event_time
+        location
+        registration_required
+        registration_url
+        featured_image {
+          id
+          filename_download
+          title
+        }
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## File Storage Configuration
+
+### Local Storage Setup
+
+<AccordionGroup>
+  <Accordion title="📁 Local File Storage">
+    **Configuration:**
+    ```env
+    STORAGE_LOCATIONS="local"
+    STORAGE_LOCAL_DRIVER="local"
+    STORAGE_LOCAL_ROOT="./uploads"
+    STORAGE_LOCAL_PUBLIC_URL="/assets"
+    ```
+    
+    **Directory Structure:**
+    ```
+    uploads/
+    ├── originals/          # Original uploaded files
+    ├── thumbnails/         # Generated thumbnails
+    └── transformed/        # Transformed images
+    ```
+    
+    **Pros:**
+    - Simple setup
+    - No external dependencies
+    - Full control over files
+    
+    **Cons:**
+    - Limited scalability
+    - No CDN benefits
+    - Backup complexity
+  </Accordion>
+
+  <Accordion title="☁️ Cloud Storage (S3)">
+    **Configuration:**
+    ```env
+    STORAGE_LOCATIONS="s3"
+    STORAGE_S3_DRIVER="s3"
+    STORAGE_S3_KEY="your-access-key"
+    STORAGE_S3_SECRET="your-secret-key"
+    STORAGE_S3_BUCKET="mms-ppg-assets"
+    STORAGE_S3_REGION="eu-west-2"
+    STORAGE_S3_ENDPOINT="https://s3.eu-west-2.amazonaws.com"
+    ```
+    
+    **Benefits:**
+    - Scalable storage
+    - CDN integration
+    - Automatic backups
+    - Global distribution
+    
+    **Setup Steps:**
+    1. Create S3 bucket
+    2. Configure IAM user with appropriate permissions
+    3. Set up CloudFront distribution (optional)
+    4. Configure CORS for web access
+  </Accordion>
+
+  <Accordion title="🖼️ Image Transformations">
+    **Transformation API:**
+    ```
+    /assets/{file-id}?width=400&height=300&fit=cover&quality=80
+    ```
+    
+    **Common Parameters:**
+    - `width`, `height`: Resize dimensions
+    - `fit`: cover, contain, fill, inside, outside
+    - `quality`: 1-100 (JPEG quality)
+    - `format`: jpg, png, webp, avif
+    - `transforms`: JSON array of transformations
+    
+    **Preset Configurations:**
+    ```json
+    {
+      "thumbnail": {
+        "width": 300,
+        "height": 300,
+        "fit": "cover",
+        "quality": 80
+      },
+      "hero": {
+        "width": 1200,
+        "height": 600,
+        "fit": "cover",
+        "quality": 85
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Email Configuration
+
+### SMTP Setup
+
+<Steps>
+  <Step title="Configure Email Settings">
+    **Environment Variables:**
+    ```env
+    EMAIL_FROM="noreply@mmsppg.org"
+    EMAIL_TRANSPORT="smtp"
+    EMAIL_SMTP_HOST="smtp.gmail.com"
+    EMAIL_SMTP_PORT="587"
+    EMAIL_SMTP_SECURE="false"
+    EMAIL_SMTP_USER="your-email@gmail.com"
+    EMAIL_SMTP_PASSWORD="your-app-password"
+    ```
+  </Step>
+
+  <Step title="Email Templates">
+    **User Invitation Template:**
+    ```html
+    <h2>Welcome to MMS PPG CMS</h2>
+    <p>You've been invited to join the MMS PPG content management system.</p>
+    <p><a href="{{url}}">Accept Invitation</a></p>
+    ```
+    
+    **Password Reset Template:**
+    ```html
+    <h2>Password Reset Request</h2>
+    <p>Click the link below to reset your password:</p>
+    <p><a href="{{url}}">Reset Password</a></p>
+    <p>This link expires in 24 hours.</p>
+    ```
+  </Step>
+
+  <Step title="Notification Setup">
+    **Workflow Notifications:**
+    - Content submitted for review
+    - Content approved/rejected
+    - New user registrations
+    - System alerts
+    
+    **Configuration in Directus:**
+    1. Go to Settings → Flows
+    2. Create notification flows
+    3. Configure email templates
+    4. Set up trigger conditions
+  </Step>
+</Steps>
+
+## Security Configuration
+
+### Authentication Security
+
+<AccordionGroup>
+  <Accordion title="🔐 Two-Factor Authentication">
+    **Enable 2FA:**
+    1. Go to Settings → Security
+    2. Enable "Enforce Two-Factor Authentication"
+    3. Configure TOTP settings
+    4. Require for admin and publisher roles
+    
+    **Supported Methods:**
+    - TOTP (Google Authenticator, Authy)
+    - SMS (requires additional configuration)
+    - Email-based codes
+  </Accordion>
+
+  <Accordion title="🛡️ Password Policies">
+    **Password Requirements:**
+    ```json
+    {
+      "minLength": 12,
+      "requireUppercase": true,
+      "requireLowercase": true,
+      "requireNumbers": true,
+      "requireSpecialChars": true,
+      "preventCommonPasswords": true,
+      "preventUserInfo": true
+    }
+    ```
+    
+    **Session Management:**
+    - Session timeout: 1 hour
+    - Concurrent sessions: Limited
+    - Automatic logout on inactivity
+    - Secure session cookies
+  </Accordion>
+
+  <Accordion title="🌐 CORS Configuration">
+    **CORS Settings:**
+    ```env
+    CORS_ENABLED="true"
+    CORS_ORIGIN="https://mmsppg.org,https://www.mmsppg.org"
+    CORS_METHODS="GET,POST,PATCH,DELETE"
+    CORS_ALLOWED_HEADERS="Content-Type,Authorization"
+    CORS_EXPOSED_HEADERS=""
+    CORS_CREDENTIALS="true"
+    CORS_MAX_AGE="18000"
+    ```
+    
+    **Security Headers:**
+    - Content Security Policy
+    - X-Frame-Options
+    - X-Content-Type-Options
+    - Referrer Policy
+  </Accordion>
+</AccordionGroup>
+
+### API Security
+
+<CardGroup cols={2}>
+  <Card title="Rate Limiting" icon="shield">
+    **Configuration:**
+    ```env
+    RATE_LIMITER_ENABLED="true"
+    RATE_LIMITER_POINTS="100"
+    RATE_LIMITER_DURATION="60"
+    RATE_LIMITER_STORE="memory"
+    ```
+    
+    **Limits:**
+    - 100 requests per minute per IP
+    - Higher limits for authenticated users
+    - Stricter limits for login attempts
+  </Card>
+  
+  <Card title="Input Validation" icon="check-circle">
+    **Validation Rules:**
+    - SQL injection prevention
+    - XSS protection
+    - File upload restrictions
+    - Content sanitization
+    
+    **File Upload Security:**
+    - Allowed file types whitelist
+    - File size limits
+    - Virus scanning (optional)
+    - Secure file naming
+  </Card>
+</CardGroup>
+
+## Monitoring and Logging
+
+### Application Monitoring
+
+<Steps>
+  <Step title="Enable Logging">
+    **Log Configuration:**
+    ```env
+    LOG_LEVEL="info"
+    LOG_STYLE="pretty"
+    ```
+    
+    **Log Levels:**
+    - `fatal`: System crashes
+    - `error`: Error conditions
+    - `warn`: Warning conditions
+    - `info`: Informational messages
+    - `debug`: Debug information
+    - `trace`: Detailed trace information
+  </Step>
+
+  <Step title="Health Checks">
+    **Health Check Endpoint:**
+    ```
+    GET /server/health
+    ```
+    
+    **Response:**
+    ```json
+    {
+      "status": "ok",
+      "releaseId": "9.0.0",
+      "serviceId": "directus",
+      "checks": {
+        "database": "ok",
+        "redis": "ok",
+        "storage": "ok"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Performance Monitoring">
+    **Metrics to Track:**
+    - Response times
+    - Database query performance
+    - File upload/download speeds
+    - Memory usage
+    - CPU utilization
+    
+    **Tools:**
+    - Application Performance Monitoring (APM)
+    - Database monitoring
+    - Server monitoring
+    - Log aggregation
+  </Step>
+</Steps>
+
+## Backup and Recovery
+
+### Automated Backups
+
+<AccordionGroup>
+  <Accordion title="💾 Database Backups">
+    **PostgreSQL Backup Script:**
+    ```bash
+    #!/bin/bash
+    
+    # Configuration
+    DB_NAME="directus_mms_ppg"
+    DB_USER="directus"
+    BACKUP_DIR="/backups"
+    DATE=$(date +%Y%m%d_%H%M%S)
+    
+    # Create backup
+    pg_dump -U $DB_USER -h localhost $DB_NAME > $BACKUP_DIR/db_backup_$DATE.sql
+    
+    # Compress backup
+    gzip $BACKUP_DIR/db_backup_$DATE.sql
+    
+    # Remove backups older than 30 days
+    find $BACKUP_DIR -name "db_backup_*.sql.gz" -mtime +30 -delete
+    ```
+    
+    **Schedule with Cron:**
+    ```bash
+    # Daily backup at 2 AM
+    0 2 * * * /path/to/backup-script.sh
+    ```
+  </Accordion>
+
+  <Accordion title="📁 File Backups">
+    **File Backup Script:**
+    ```bash
+    #!/bin/bash
+    
+    # Configuration
+    UPLOADS_DIR="/path/to/directus/uploads"
+    BACKUP_DIR="/backups/files"
+    DATE=$(date +%Y%m%d_%H%M%S)
+    
+    # Create compressed backup
+    tar -czf $BACKUP_DIR/files_backup_$DATE.tar.gz -C $UPLOADS_DIR .
+    
+    # Remove old backups
+    find $BACKUP_DIR -name "files_backup_*.tar.gz" -mtime +7 -delete
+    ```
+    
+    **Cloud Sync:**
+    ```bash
+    # Sync to S3
+    aws s3 sync $BACKUP_DIR s3://mms-ppg-backups/files/
+    ```
+  </Accordion>
+
+  <Accordion title="🔄 Recovery Procedures">
+    **Database Recovery:**
+    ```bash
+    # Stop Directus
+    systemctl stop directus
+    
+    # Restore database
+    gunzip -c db_backup_20240315_020000.sql.gz | psql -U directus directus_mms_ppg
+    
+    # Start Directus
+    systemctl start directus
+    ```
+    
+    **File Recovery:**
+    ```bash
+    # Stop Directus
+    systemctl stop directus
+    
+    # Restore files
+    cd /path/to/directus
+    tar -xzf /backups/files/files_backup_20240315_020000.tar.gz -C uploads/
+    
+    # Set permissions
+    chown -R directus:directus uploads/
+    
+    # Start Directus
+    systemctl start directus
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="🚫 Connection Issues">
+    **Database Connection Failed:**
+    ```
+    Error: connect ECONNREFUSED 127.0.0.1:5432
+    ```
+    
+    **Solutions:**
+    1. Check database server is running
+    2. Verify connection credentials
+    3. Check firewall settings
+    4. Validate database exists
+    
+    **Debug Commands:**
+    ```bash
+    # Test database connection
+    psql -h localhost -U directus -d directus_mms_ppg
+    
+    # Check Directus logs
+    docker logs directus-container
+    ```
+  </Accordion>
+
+  <Accordion title="🔐 Authentication Problems">
+    **Invalid Token Error:**
+    ```
+    Error: Invalid token
+    ```
+    
+    **Solutions:**
+    1. Check token hasn't expired
+    2. Verify token permissions
+    3. Regenerate token if needed
+    4. Check CORS configuration
+    
+    **Token Validation:**
+    ```bash
+    # Test token
+    curl -H "Authorization: Bearer YOUR_TOKEN" \
+         https://your-directus.app/users/me
+    ```
+  </Accordion>
+
+  <Accordion title="📁 File Upload Issues">
+    **File Upload Failed:**
+    ```
+    Error: File upload failed
+    ```
+    
+    **Common Causes:**
+    1. File size exceeds limit
+    2. Unsupported file type
+    3. Storage permissions
+    4. Disk space full
+    
+    **Check Configuration:**
+    ```env
+    # File upload limits
+    FILES_MAX_UPLOAD_SIZE="10MB"
+    FILES_ALLOWED_TYPES="image/jpeg,image/png,image/webp,application/pdf"
+    ```
+  </Accordion>
+
+  <Accordion title="⚡ Performance Issues">
+    **Slow API Responses:**
+    
+    **Optimization Steps:**
+    1. Enable database query caching
+    2. Optimize database indexes
+    3. Use CDN for file delivery
+    4. Enable response compression
+    
+    **Database Optimization:**
+    ```sql
+    -- Add indexes for common queries
+    CREATE INDEX idx_blog_posts_status ON blog_posts(status);
+    CREATE INDEX idx_blog_posts_published_date ON blog_posts(published_date);
+    CREATE INDEX idx_events_event_date ON events(event_date);
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Diagnostic Tools
+
+<CardGroup cols={2}>
+  <Card title="Health Check" icon="heart-pulse">
+    **System Health:**
+    ```bash
+    # Check Directus health
+    curl https://your-directus.app/server/health
+    
+    # Check database
+    curl https://your-directus.app/server/ping
+    ```
+  </Card>
+  
+  <Card title="Log Analysis" icon="file-text">
+    **View Logs:**
+    ```bash
+    # Docker logs
+    docker logs directus-container -f
+    
+    # System logs
+    journalctl -u directus -f
+    ```
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<Steps>
+  <Step title="Complete Initial Setup">
+    Follow this guide to set up your Directus instance with all required collections and permissions
+  </Step>
+  
+  <Step title="Configure Dashboard">
+    Set up the admin dashboard with PPG branding and useful widgets
+  </Step>
+  
+  <Step title="Test API Integration">
+    Verify that your frontend application can successfully connect to and retrieve data from Directus
+  </Step>
+  
+  <Step title="Set Up Monitoring">
+    Implement monitoring and alerting for your Directus instance
+  </Step>
+  
+  <Step title="Plan Content Migration">
+    If migrating from another CMS, plan and execute the content migration process
+  </Step>
+</Steps>
+
+<Info>
+  This setup guide provides a comprehensive foundation for your Directus CMS. Customize the configuration based on your specific requirements and hosting environment.
+</Info>

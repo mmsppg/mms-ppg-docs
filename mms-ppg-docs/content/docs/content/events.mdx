@@ -1,0 +1,791 @@
+---
+title: 'Managing Events'
+description: 'Complete guide to creating, editing, and promoting events on the MMS PPG website'
+---
+
+## What Are Events?
+
+Events are scheduled activities, meetings, workshops, or gatherings that you want to promote to your community. They appear in a dedicated events section and can include registration information, location details, and calendar integration.
+
+<img src="/images/content/events-overview.png" alt="Events page showing upcoming events in calendar and list view" />
+
+## Types of Events
+
+<CardGroup cols={2}>
+  <Card title="PPG Meetings" icon="users">
+    - Monthly committee meetings
+    - Annual general meetings
+    - Special planning sessions
+    - Board meetings
+  </Card>
+  
+  <Card title="Health Workshops" icon="heart">
+    - Diabetes management sessions
+    - Mental health awareness talks
+    - Fitness and wellness classes
+    - Nutrition workshops
+  </Card>
+  
+  <Card title="Community Events" icon="calendar">
+    - Health fairs
+    - Fundraising activities
+    - Social gatherings
+    - Volunteer appreciation events
+  </Card>
+  
+  <Card title="Educational Sessions" icon="graduation-cap">
+    - Guest speaker presentations
+    - Training workshops
+    - Information sessions
+    - Q&A forums
+  </Card>
+</CardGroup>
+
+## Creating an Event
+
+### Step-by-Step Guide
+
+<Steps>
+  <Step title="Access Events Section">
+    1. Log into the admin panel
+    2. Click **Content** in the left sidebar
+    3. Select **Events**
+    4. Click the **Create Item** button
+    
+    <img src="/images/content/create-event-button.png" alt="Create Item button in the events section" />
+  </Step>
+
+  <Step title="Add Event Basics">
+    Fill in the essential information:
+    
+    **Title** (Required)
+    - Clear, descriptive event name
+    - Include key details if helpful
+    - Keep it concise but informative
+    
+    **Slug** (Required)
+    - Auto-generated from title
+    - Edit for clarity if needed
+    - Use hyphens between words
+    
+    <img src="/images/content/event-title-slug.png" alt="Event title and slug fields" />
+    
+    **Examples:**
+    ✅ "Monthly PPG Meeting - March 2024"
+    ✅ "Diabetes Support Workshop"
+    ✅ "Community Health Fair"
+  </Step>
+
+  <Step title="Set Date and Time">
+    Configure when your event happens:
+    
+    **Event Date** (Required)
+    - Use the date picker
+    - Double-check the date is correct
+    - Consider day of the week
+    
+    **Event Time** (Optional)
+    - Use 24-hour or 12-hour format
+    - Include start time at minimum
+    - Add end time if helpful
+    
+    <img src="/images/content/event-datetime.png" alt="Date and time picker for events" />
+    
+    <Tip>
+      Consider your audience when choosing dates and times. Avoid conflicts with holidays or other major community events.
+    </Tip>
+  </Step>
+
+  <Step title="Add Location Information">
+    Help people find your event:
+    
+    **Location** (Optional but recommended)
+    - Full address including postcode
+    - Building or room name if applicable
+    - Parking information if relevant
+    
+    **Examples:**
+    - "MMS Surgery, 123 High Street, Anytown, AB1 2CD"
+    - "Community Centre, Main Hall, 456 Church Lane"
+    - "Online via Zoom (link will be sent to registered participants)"
+    
+    <img src="/images/content/event-location.png" alt="Location field with address information" />
+  </Step>
+
+  <Step title="Write Event Description">
+    Use the rich text editor to describe your event:
+    
+    **What to Include:**
+    - What the event is about
+    - Who should attend
+    - What to expect
+    - What to bring (if anything)
+    - Contact information for questions
+    
+    **Structure Template:**
+    1. Brief overview of the event
+    2. Detailed agenda or activities
+    3. Target audience
+    4. Practical information (parking, refreshments, etc.)
+    5. Contact details for questions
+    
+    <img src="/images/content/event-description-editor.png" alt="Rich text editor for event description" />
+  </Step>
+
+  <Step title="Configure Registration">
+    Set up how people can register:
+    
+    **Registration Required** (Toggle)
+    - Turn on if people need to register
+    - Turn off for drop-in events
+    
+    **Registration URL** (If registration required)
+    - Link to registration form
+    - External booking system
+    - Email address for registration
+    - Phone number for bookings
+    
+    <img src="/images/content/event-registration.png" alt="Registration settings with toggle and URL field" />
+    
+    **Registration Examples:**
+    - "mailto:events@mmsppg.org"
+    - "https://eventbrite.com/your-event"
+    - "tel:01234567890"
+    - "https://forms.google.com/your-form"
+  </Step>
+
+  <Step title="Add Featured Image">
+    Choose an image to represent your event:
+    
+    1. Click the **Featured Image** field
+    2. Upload a new image or select existing
+    3. Add descriptive **Alt Text**
+    4. Consider how it looks as a thumbnail
+    
+    <img src="/images/content/event-featured-image.png" alt="Featured image upload for events" />
+    
+    **Image Ideas:**
+    - Photo from previous similar events
+    - Generic health/community images
+    - Event poster or flyer
+    - Location photo
+  </Step>
+
+  <Step title="Set Category and Status">
+    Organize and control visibility:
+    
+    **Category** (Optional)
+    - Group similar events together
+    - Makes browsing easier for visitors
+    - Helps with organization
+    
+    **Status** (Required)
+    - **Draft**: Still working on it
+    - **In Review**: Ready for approval
+    - **Published**: Live on the website
+    
+    <img src="/images/content/event-category-status.png" alt="Category and status selection fields" />
+  </Step>
+
+  <Step title="Save and Publish">
+    Choose your next action:
+    - **Save as Draft**: Continue working later
+    - **Submit for Review**: Send to reviewers
+    - **Publish**: Make it live (if you have permission)
+    
+    <img src="/images/content/event-save-publish.png" alt="Save and publish options for events" />
+  </Step>
+</Steps>
+
+## Event Fields Explained
+
+### Required Fields
+
+<Tabs>
+  <Tab title="Title">
+    **Purpose**: The name of your event as it appears to visitors
+    
+    **Best Practices**:
+    - Be specific and descriptive
+    - Include the type of event
+    - Add date/month if it's a recurring event
+    - Keep it under 60 characters when possible
+    
+    **Good Examples**:
+    ✅ "Monthly PPG Meeting - March 2024"
+    ✅ "Diabetes Management Workshop"
+    ✅ "Community Health and Wellbeing Fair"
+    
+    **Avoid**:
+    ❌ "Meeting"
+    ❌ "Workshop"
+    ❌ "Event This Month"
+  </Tab>
+
+  <Tab title="Event Date">
+    **Purpose**: When the event takes place
+    
+    **Guidelines**:
+    - Use the date picker for accuracy
+    - Double-check the date is correct
+    - Consider lead time for promotion
+    - Think about conflicts with holidays
+    
+    **Planning Tips**:
+    - Give at least 2 weeks notice for most events
+    - Check local school holidays
+    - Avoid major religious holidays
+    - Consider seasonal factors
+  </Tab>
+
+  <Tab title="Description">
+    **Purpose**: Detailed information about the event
+    
+    **What to Include**:
+    - Event overview and purpose
+    - Agenda or schedule
+    - Target audience
+    - What attendees will gain
+    - Practical details (refreshments, parking, etc.)
+    
+    **Structure Example**:
+    ```
+    Join us for our monthly PPG meeting where we discuss 
+    practice improvements and community health initiatives.
+    
+    Agenda:
+    - Practice updates
+    - Patient feedback review
+    - New service planning
+    - Community health projects
+    
+    This meeting is open to all registered patients. 
+    Light refreshments will be provided.
+    ```
+  </Tab>
+
+  <Tab title="Status">
+    **Purpose**: Controls whether the event is visible to the public
+    
+    **Status Options**:
+    - **Draft**: Work in progress, only you can see it
+    - **In Review**: Submitted for approval
+    - **Published**: Live on the website
+    
+    **Workflow**:
+    Draft → In Review → Published
+    
+    **When to Use Each**:
+    - Use Draft while planning details
+    - Use In Review when ready for feedback
+    - Use Published when event is confirmed
+  </Tab>
+</Tabs>
+
+### Optional Fields
+
+<CardGroup cols={2}>
+  <Card title="Event Time" icon="clock">
+    **When to Include**:
+    - Specific start time events
+    - Time-sensitive activities
+    - When duration matters
+    
+    **Format Options**:
+    - "2:00 PM" or "14:00"
+    - "2:00 PM - 4:00 PM"
+    - "Doors open 1:30 PM, starts 2:00 PM"
+  </Card>
+  
+  <Card title="Location" icon="map-pin">
+    **What to Include**:
+    - Full address with postcode
+    - Building/room details
+    - Parking information
+    - Public transport links
+    
+    **Examples**:
+    - "MMS Surgery, Conference Room"
+    - "Community Centre, Main Hall"
+    - "Online via Zoom"
+  </Card>
+  
+  <Card title="Registration Required" icon="clipboard-check">
+    **When to Use**:
+    - Limited capacity events
+    - Catering requirements
+    - Security/access needs
+    - Planning purposes
+    
+    **Registration Methods**:
+    - Email address
+    - Phone number
+    - Online form
+    - External booking system
+  </Card>
+  
+  <Card title="Category" icon="tag">
+    **Common Categories**:
+    - PPG Meetings
+    - Health Workshops
+    - Community Events
+    - Training Sessions
+    
+    **Benefits**:
+    - Easier browsing for visitors
+    - Better organization
+    - Filtering capabilities
+  </Card>
+</CardGroup>
+
+## Event Templates
+
+### PPG Meeting Template
+
+```markdown
+# Monthly PPG Meeting - [Month Year]
+
+Join us for our regular Patient Participation Group meeting where we discuss practice improvements and community health initiatives.
+
+## Agenda
+- Practice updates and news
+- Patient feedback review
+- Service development planning
+- Community health projects
+- Questions and discussion
+
+## Who Should Attend
+This meeting is open to all registered patients who are interested in helping improve our practice and community health services.
+
+## What to Expect
+- Informal, friendly discussion
+- Opportunity to share your views
+- Learn about practice developments
+- Meet other community members
+- Light refreshments provided
+
+## Location
+[Practice Name]
+[Full Address]
+[Parking Information]
+
+## Questions?
+Contact [Name] at [Email] or [Phone Number]
+```
+
+### Health Workshop Template
+
+```markdown
+# [Workshop Topic] Workshop
+
+Learn practical strategies for managing [health condition/topic] in this interactive workshop led by [healthcare professional/expert].
+
+## What You'll Learn
+- [Key learning point 1]
+- [Key learning point 2]
+- [Key learning point 3]
+- [Key learning point 4]
+
+## Who Should Attend
+This workshop is suitable for:
+- [Target audience 1]
+- [Target audience 2]
+- [Target audience 3]
+
+## Workshop Format
+- [Duration] interactive session
+- Small group discussions
+- Practical exercises
+- Q&A with expert
+- Take-home resources
+
+## What to Bring
+- [Item 1 if needed]
+- [Item 2 if needed]
+- Notebook for taking notes
+
+## Registration Required
+Spaces are limited to ensure quality interaction. Please register by [date] using [registration method].
+
+## Questions?
+Contact [Name] at [Email] or [Phone Number]
+```
+
+### Community Event Template
+
+```markdown
+# [Event Name]
+
+Join us for [brief description of event] - a fun day for all the family!
+
+## Event Highlights
+- [Activity/attraction 1]
+- [Activity/attraction 2]
+- [Activity/attraction 3]
+- [Activity/attraction 4]
+
+## Schedule
+- [Time]: [Activity]
+- [Time]: [Activity]
+- [Time]: [Activity]
+- [Time]: [Activity]
+
+## For All Ages
+This event offers something for everyone:
+- **Children**: [Child-friendly activities]
+- **Adults**: [Adult activities]
+- **Families**: [Family activities]
+
+## Practical Information
+- **Entry**: [Free/Cost]
+- **Parking**: [Parking details]
+- **Refreshments**: [Food/drink availability]
+- **Weather**: [Indoor/outdoor/contingency plans]
+
+## Get Involved
+Interested in volunteering or helping out? Contact [Name] at [Email].
+```
+
+## Managing Event Registration
+
+### Registration Options
+
+<AccordionGroup>
+  <Accordion title="📧 Email Registration">
+    **When to Use**: Simple events with basic registration needs
+    
+    **Setup**:
+    - Use a dedicated email address
+    - Set up auto-reply confirmation
+    - Create a simple tracking system
+    
+    **Example**: "Register by emailing events@mmsppg.org with your name and contact details"
+    
+    **Pros**: Simple, personal touch
+    **Cons**: Manual tracking required
+  </Accordion>
+
+  <Accordion title="📞 Phone Registration">
+    **When to Use**: Older demographic, complex requirements
+    
+    **Setup**:
+    - Designate specific phone hours
+    - Train staff on registration process
+    - Keep written records
+    
+    **Example**: "Call 01234 567890 between 9 AM - 5 PM to register"
+    
+    **Pros**: Personal service, immediate answers
+    **Cons**: Limited availability, staff time required
+  </Accordion>
+
+  <Accordion title="📝 Online Forms">
+    **When to Use**: Detailed information needed, automated processing
+    
+    **Setup**:
+    - Use Google Forms, Microsoft Forms, or similar
+    - Include all necessary fields
+    - Set up automatic confirmations
+    
+    **Example**: Link to a form collecting name, contact details, dietary requirements, etc.
+    
+    **Pros**: Automated, detailed data collection
+    **Cons**: Requires technical setup
+  </Accordion>
+
+  <Accordion title="🎫 External Booking Systems">
+    **When to Use**: Paid events, complex ticketing needs
+    
+    **Options**:
+    - Eventbrite
+    - Ticketmaster
+    - Local booking systems
+    
+    **Example**: "Book tickets at eventbrite.com/your-event"
+    
+    **Pros**: Professional ticketing, payment processing
+    **Cons**: May have fees, less control
+  </Accordion>
+</AccordionGroup>
+
+### Registration Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Clear Instructions" icon="list-check">
+    - Explain exactly how to register
+    - Include deadlines and requirements
+    - Provide multiple contact methods
+    - Confirm registration received
+  </Card>
+  
+  <Card title="Capacity Management" icon="users">
+    - Set realistic capacity limits
+    - Consider venue size and safety
+    - Plan for no-shows (typically 10-20%)
+    - Have a waiting list system
+  </Card>
+  
+  <Card title="Communication" icon="envelope">
+    - Send confirmation emails/messages
+    - Provide event reminders
+    - Share practical information
+    - Include contact details for questions
+  </Card>
+  
+  <Card title="Accessibility" icon="universal-access">
+    - Ask about accessibility needs
+    - Provide venue accessibility information
+    - Offer alternative formats
+    - Ensure inclusive registration process
+  </Card>
+</CardGroup>
+
+## Event Promotion
+
+### Promoting Your Events
+
+<Steps>
+  <Step title="Plan Promotion Timeline">
+    **4-6 Weeks Before**: Initial announcement
+    **2-3 Weeks Before**: Reminder and details
+    **1 Week Before**: Final reminder
+    **Day Before**: Last-minute details
+  </Step>
+  
+  <Step title="Use Multiple Channels">
+    - Website events page
+    - Blog post announcement
+    - Email newsletters
+    - Social media
+    - Practice notice boards
+    - Local community groups
+  </Step>
+  
+  <Step title="Create Compelling Content">
+    - Clear, benefit-focused headlines
+    - Attractive featured images
+    - Easy-to-scan information
+    - Strong call-to-action
+  </Step>
+  
+  <Step title="Make Registration Easy">
+    - Multiple registration methods
+    - Clear instructions
+    - Quick response to inquiries
+    - Confirmation process
+  </Step>
+</Steps>
+
+### Event Announcement Checklist
+
+<AccordionGroup>
+  <Accordion title="✅ Essential Information">
+    - [ ] Event title and description
+    - [ ] Date and time
+    - [ ] Location and directions
+    - [ ] Registration requirements
+    - [ ] Contact information
+    - [ ] Cost (if any)
+  </Accordion>
+
+  <Accordion title="✅ Additional Details">
+    - [ ] Target audience
+    - [ ] What to bring/expect
+    - [ ] Parking information
+    - [ ] Accessibility details
+    - [ ] Refreshment arrangements
+    - [ ] Weather contingency plans
+  </Accordion>
+
+  <Accordion title="✅ Promotion Materials">
+    - [ ] Featured image selected
+    - [ ] Social media posts prepared
+    - [ ] Email announcement written
+    - [ ] Website event created
+    - [ ] Print materials designed (if needed)
+  </Accordion>
+</AccordionGroup>
+
+## Managing Event Calendar
+
+### Calendar Integration
+
+<img src="/images/content/event-calendar-view.png" alt="Calendar view showing events by month with different colors for categories" />
+
+**Calendar Features:**
+- Monthly, weekly, and daily views
+- Color coding by category
+- Quick event creation
+- Drag-and-drop rescheduling
+- Export to external calendars
+
+**Viewing Options:**
+- **List View**: All events in chronological order
+- **Calendar View**: Traditional calendar layout
+- **Category Filter**: Show only specific types of events
+- **Search**: Find events by keyword
+
+### Recurring Events
+
+<Steps>
+  <Step title="Identify Recurring Events">
+    Common recurring events:
+    - Monthly PPG meetings
+    - Weekly exercise classes
+    - Quarterly health checks
+    - Annual events
+  </Step>
+  
+  <Step title="Create Master Template">
+    - Set up the first event with all details
+    - Save as template for future use
+    - Include standard description and settings
+  </Step>
+  
+  <Step title="Schedule Future Events">
+    - Duplicate the master event
+    - Update dates and specific details
+    - Adjust for holidays or special circumstances
+  </Step>
+  
+  <Step title="Maintain Consistency">
+    - Use consistent naming conventions
+    - Keep similar format and structure
+    - Update all instances when details change
+  </Step>
+</Steps>
+
+## Event Analytics
+
+### Tracking Event Success
+
+<img src="/images/content/event-analytics.png" alt="Analytics dashboard showing event page views, registrations, and attendance" />
+
+**Key Metrics:**
+- **Page Views**: How many people viewed the event
+- **Registration Rate**: Percentage who registered after viewing
+- **Attendance Rate**: Actual attendees vs. registrations
+- **Engagement**: Time spent on event page
+- **Referral Sources**: How people found the event
+
+### Improving Event Performance
+
+<CardGroup cols={2}>
+  <Card title="Content Optimization" icon="edit">
+    - Write compelling descriptions
+    - Use attractive images
+    - Include clear benefits
+    - Add social proof (testimonials)
+  </Card>
+  
+  <Card title="Timing and Scheduling" icon="calendar">
+    - Analyze best days/times
+    - Avoid conflicts with other events
+    - Consider seasonal factors
+    - Plan adequate promotion time
+  </Card>
+  
+  <Card title="Registration Process" icon="clipboard">
+    - Simplify registration steps
+    - Offer multiple registration methods
+    - Send confirmation and reminders
+    - Follow up with non-attendees
+  </Card>
+  
+  <Card title="Post-Event Follow-up" icon="users">
+    - Collect feedback from attendees
+    - Share event highlights
+    - Thank participants and volunteers
+    - Plan improvements for next time
+  </Card>
+</CardGroup>
+
+## Troubleshooting Common Issues
+
+<AccordionGroup>
+  <Accordion title="🚫 Low Registration Numbers">
+    **Possible Causes:**
+    - Insufficient promotion time
+    - Unclear event benefits
+    - Inconvenient timing
+    - Complex registration process
+    
+    **Solutions:**
+    - Start promotion earlier
+    - Highlight clear benefits and outcomes
+    - Survey audience for preferred times
+    - Simplify registration process
+    - Use multiple promotion channels
+  </Accordion>
+
+  <Accordion title="📅 Date/Time Conflicts">
+    **Prevention:**
+    - Check local event calendars
+    - Avoid school holidays and major events
+    - Survey regular attendees for preferences
+    - Keep a master calendar of all events
+    
+    **If Conflicts Arise:**
+    - Communicate changes clearly
+    - Offer alternative dates if possible
+    - Apologize for any inconvenience
+    - Learn for future planning
+  </Accordion>
+
+  <Accordion title="📍 Venue Issues">
+    **Common Problems:**
+    - Venue unavailable
+    - Capacity too small/large
+    - Accessibility concerns
+    - Technical equipment failures
+    
+    **Solutions:**
+    - Always have backup venue options
+    - Visit venues before booking
+    - Confirm bookings in writing
+    - Test equipment beforehand
+    - Have contingency plans
+  </Accordion>
+
+  <Accordion title="💬 Communication Problems">
+    **Issues:**
+    - Attendees not receiving information
+    - Last-minute changes not communicated
+    - Registration confirmations not sent
+    
+    **Prevention:**
+    - Use multiple communication channels
+    - Keep contact lists updated
+    - Set up automatic confirmations
+    - Have a communication timeline
+    - Designate communication responsibilities
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<Steps>
+  <Step title="Create Your First Event">
+    Start with a simple event like a PPG meeting to practice using the system
+  </Step>
+  
+  <Step title="Develop Event Templates">
+    Create reusable templates for your common event types
+  </Step>
+  
+  <Step title="Plan Event Calendar">
+    Map out events for the next 3-6 months to ensure good spacing and promotion time
+  </Step>
+  
+  <Step title="Set Up Registration Systems">
+    Choose and implement registration methods that work for your audience
+  </Step>
+  
+  <Step title="Monitor and Improve">
+    Track event success and continuously improve your event management process
+  </Step>
+</Steps>
+
+<Info>
+  Successful events require planning, promotion, and follow-up. Start simple and build your event management skills over time.
+</Info>

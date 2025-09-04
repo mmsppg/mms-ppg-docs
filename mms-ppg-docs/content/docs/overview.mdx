@@ -1,0 +1,510 @@
+---
+title: 'System Overview'
+description: 'Comprehensive overview of the MMS PPG website architecture and features'
+---
+
+## Architecture Overview
+
+The MMS PPG website is built using modern web technologies with a focus on accessibility, performance, and ease of use.
+
+<img src="/images/overview/architecture-diagram.png" alt="System architecture showing frontend, CMS, and hosting layers" />
+
+### Technology Stack
+
+<CardGroup cols={3}>
+  <Card title="Frontend" icon="code">
+    **Next.js 15**
+    - React-based framework
+    - Server-side rendering
+    - Static site generation
+    - Image optimization
+    - Performance optimized
+  </Card>
+  
+  <Card title="Content Management" icon="database">
+    **Directus CMS**
+    - Headless CMS architecture
+    - Real-time collaboration
+    - Role-based permissions
+    - RESTful and GraphQL APIs
+    - Automated workflows
+  </Card>
+  
+  <Card title="Infrastructure" icon="server">
+    **Cloudflare Pages**
+    - Global CDN
+    - Automatic deployments
+    - SSL certificates
+    - DDoS protection
+    - Analytics integration
+  </Card>
+</CardGroup>
+
+## Content Management System
+
+### Directus CMS Features
+
+<AccordionGroup>
+  <Accordion title="🎨 PPG Branded Interface">
+    The admin interface is customized with PPG branding:
+    - Custom green color scheme matching PPG identity
+    - PPG logo integration throughout the interface
+    - Consistent typography and visual hierarchy
+    - Accessibility-compliant design elements
+    
+    <img src="/images/overview/branded-interface.png" alt="Directus admin interface with PPG green branding" />
+  </Accordion>
+
+  <Accordion title="👥 Role-Based Access Control">
+    Four distinct user roles with specific permissions:
+    
+    **Content Creator**
+    - Create and edit own content
+    - Upload and manage own files
+    - Submit content for review
+    
+    **Content Reviewer**
+    - Review submitted content
+    - Add comments and feedback
+    - Approve or reject submissions
+    
+    **Content Publisher**
+    - Publish approved content
+    - Manage site settings
+    - Configure navigation menus
+    
+    **Administrator**
+    - Full system access
+    - User management
+    - System configuration
+  </Accordion>
+
+  <Accordion title="🔄 Content Workflow">
+    Structured content approval process:
+    
+    ```mermaid
+    graph LR
+        A[Draft] --> B[In Review]
+        B --> C[Approved]
+        B --> D[Rejected]
+        C --> E[Published]
+        D --> A
+        E --> F[Live on Website]
+    ```
+    
+    - **Draft**: Work in progress, private to creator
+    - **In Review**: Submitted for approval, reviewers notified
+    - **Approved**: Ready for publication
+    - **Published**: Live on the website
+    - **Rejected**: Returned to creator with feedback
+  </Accordion>
+
+  <Accordion title="📊 Dashboard & Analytics">
+    Comprehensive dashboard with real-time insights:
+    - Content overview and status breakdown
+    - Recent activity feed
+    - Upcoming events calendar
+    - Performance metrics
+    - File storage usage
+    - User activity tracking
+    
+    <img src="/images/overview/dashboard-panels.png" alt="Dashboard showing various analytics panels" />
+  </Accordion>
+</AccordionGroup>
+
+## Content Types
+
+### Blog Posts
+<img src="/images/overview/blog-post-structure.png" alt="Blog post content structure diagram" />
+
+**Fields Available:**
+- Title and SEO-friendly slug
+- Rich text content with formatting
+- Featured image with alt text
+- Author information
+- Publication date and scheduling
+- Categories and tags
+- Meta description for SEO
+
+**Features:**
+- Rich text editor with accessibility tools
+- Image insertion and optimization
+- Link management
+- Social media preview
+- SEO optimization tools
+
+### Events
+<img src="/images/overview/event-structure.png" alt="Event content structure diagram" />
+
+**Fields Available:**
+- Event title and description
+- Date and time information
+- Location details
+- Registration requirements
+- Featured image
+- Category classification
+- Contact information
+
+**Features:**
+- Calendar integration
+- Registration link management
+- Recurring event support
+- Location mapping
+- Reminder notifications
+
+### Pages
+<img src="/images/overview/page-structure.png" alt="Page content structure diagram" />
+
+**Fields Available:**
+- Page title and content
+- SEO metadata
+- Featured images
+- Custom layouts
+- Navigation placement
+- Access permissions
+
+**Features:**
+- Template system
+- Custom page layouts
+- Navigation management
+- SEO optimization
+- Access control
+
+### Media Files
+<img src="/images/overview/media-management.png" alt="Media file management interface" />
+
+**Supported Formats:**
+- Images: JPG, PNG, WebP, SVG
+- Documents: PDF, DOC, DOCX
+- Archives: ZIP, RAR
+
+**Features:**
+- Automatic image optimization
+- Multiple size variants
+- Alt text management
+- Folder organization
+- Usage tracking
+
+## Accessibility Features
+
+### WCAG 2.1 AA Compliance
+
+<CardGroup cols={2}>
+  <Card title="Visual Accessibility" icon="eye">
+    - High contrast color schemes
+    - Scalable text and UI elements
+    - Clear visual hierarchy
+    - Focus indicators for keyboard navigation
+  </Card>
+  
+  <Card title="Motor Accessibility" icon="hand">
+    - Keyboard navigation support
+    - Large touch targets (44px minimum)
+    - No time-based interactions
+    - Alternative input methods
+  </Card>
+  
+  <Card title="Auditory Accessibility" icon="volume-high">
+    - Captions for video content
+    - Audio descriptions available
+    - Visual alternatives for audio cues
+    - No auto-playing audio
+  </Card>
+  
+  <Card title="Cognitive Accessibility" icon="brain">
+    - Clear, simple language
+    - Consistent navigation
+    - Error prevention and recovery
+    - Multiple ways to find content
+  </Card>
+</CardGroup>
+
+### Built-in Accessibility Tools
+
+<AccordionGroup>
+  <Accordion title="🖼️ Image Alt Text Management">
+    - Required alt text fields for all images
+    - Alt text suggestions based on image content
+    - Decorative image identification
+    - Complex image description support
+  </Accordion>
+
+  <Accordion title="⌨️ Keyboard Navigation">
+    - Full keyboard accessibility
+    - Logical tab order
+    - Skip navigation links
+    - Keyboard shortcuts for common actions
+  </Accordion>
+
+  <Accordion title="🎨 Color and Contrast">
+    - Automatic contrast checking
+    - Color-blind friendly palette
+    - High contrast mode support
+    - No color-only information conveyance
+  </Accordion>
+
+  <Accordion title="📱 Responsive Design">
+    - Mobile-first approach
+    - Touch-friendly interface
+    - Scalable text and images
+    - Orientation independence
+  </Accordion>
+</AccordionGroup>
+
+## Performance Optimization
+
+### Frontend Performance
+
+<Tabs>
+  <Tab title="Image Optimization">
+    **Automatic Processing:**
+    - WebP format conversion for modern browsers
+    - Multiple size variants (thumbnail, medium, large)
+    - Lazy loading implementation
+    - Responsive image serving
+    
+    **Manual Controls:**
+    - Quality settings per image type
+    - Compression level adjustment
+    - Format selection override
+    - Alt text optimization
+  </Tab>
+
+  <Tab title="Caching Strategy">
+    **Multi-Layer Caching:**
+    - CDN edge caching (Cloudflare)
+    - Browser caching headers
+    - API response caching
+    - Static asset optimization
+    
+    **Cache Invalidation:**
+    - Automatic on content updates
+    - Manual cache clearing
+    - Selective invalidation
+    - Real-time updates
+  </Tab>
+
+  <Tab title="Code Optimization">
+    **Build Optimizations:**
+    - Tree shaking unused code
+    - Code splitting by route
+    - Minification and compression
+    - Critical CSS inlining
+    
+    **Runtime Performance:**
+    - Lazy component loading
+    - Prefetching critical resources
+    - Service worker implementation
+    - Progressive enhancement
+  </Tab>
+</Tabs>
+
+## Security Features
+
+### Data Protection
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock">
+    - Multi-factor authentication support
+    - Session management
+    - Password policies
+    - Account lockout protection
+  </Card>
+  
+  <Card title="Authorization" icon="shield">
+    - Role-based access control
+    - Permission granularity
+    - Content-level permissions
+    - API access tokens
+  </Card>
+  
+  <Card title="Data Security" icon="database">
+    - Encrypted data transmission
+    - Secure file uploads
+    - Input validation and sanitization
+    - SQL injection prevention
+  </Card>
+  
+  <Card title="Infrastructure" icon="server">
+    - SSL/TLS encryption
+    - DDoS protection
+    - Regular security updates
+    - Backup and recovery
+  </Card>
+</CardGroup>
+
+## Integration Capabilities
+
+### API Access
+
+<AccordionGroup>
+  <Accordion title="🔌 REST API">
+    Full RESTful API for all content types:
+    ```bash
+    GET /items/blog_posts
+    POST /items/blog_posts
+    PATCH /items/blog_posts/{id}
+    DELETE /items/blog_posts/{id}
+    ```
+    
+    Features:
+    - Filtering and sorting
+    - Pagination support
+    - Field selection
+    - Relationship expansion
+  </Accordion>
+
+  <Accordion title="📊 GraphQL API">
+    Flexible GraphQL endpoint for complex queries:
+    ```graphql
+    query {
+      blog_posts(filter: {status: {_eq: "published"}}) {
+        id
+        title
+        content
+        featured_image {
+          id
+          filename_download
+        }
+      }
+    }
+    ```
+    
+    Features:
+    - Single endpoint for all data
+    - Precise data fetching
+    - Real-time subscriptions
+    - Schema introspection
+  </Accordion>
+
+  <Accordion title="🔗 Webhooks">
+    Real-time notifications for content changes:
+    - Content creation/update/deletion
+    - User actions and permissions
+    - File uploads and modifications
+    - Custom trigger conditions
+    
+    Use cases:
+    - Automatic site rebuilds
+    - Third-party integrations
+    - Notification systems
+    - Analytics tracking
+  </Accordion>
+</AccordionGroup>
+
+## Monitoring and Analytics
+
+### Performance Monitoring
+
+<img src="/images/overview/analytics-dashboard.png" alt="Analytics dashboard showing performance metrics" />
+
+**Metrics Tracked:**
+- Page load times
+- Core Web Vitals
+- User engagement
+- Content performance
+- Error rates
+- Uptime monitoring
+
+**Tools Integrated:**
+- Cloudflare Web Analytics (privacy-focused)
+- Lighthouse CI for performance audits
+- Real User Monitoring (RUM)
+- Custom performance tracking
+
+### Content Analytics
+
+**Content Performance:**
+- Page views and unique visitors
+- Time on page and bounce rate
+- Popular content identification
+- Search query analysis
+- User journey mapping
+
+**Editorial Insights:**
+- Content creation velocity
+- Review and approval times
+- Author productivity metrics
+- Content lifecycle tracking
+
+## Backup and Recovery
+
+### Automated Backups
+
+<Steps>
+  <Step title="Daily Content Backups">
+    - All content exported to JSON format
+    - File attachments included
+    - Stored in secure cloud storage
+    - 30-day retention policy
+  </Step>
+  
+  <Step title="Database Snapshots">
+    - Full database backups
+    - Point-in-time recovery capability
+    - Encrypted storage
+    - Geographic redundancy
+  </Step>
+  
+  <Step title="Code Repository">
+    - Git-based version control
+    - Automated deployment backups
+    - Rollback capabilities
+    - Change tracking and history
+  </Step>
+</Steps>
+
+### Disaster Recovery
+
+**Recovery Time Objectives:**
+- **Content Recovery**: < 1 hour
+- **Full Site Recovery**: < 4 hours
+- **Data Loss Prevention**: < 15 minutes
+
+**Recovery Procedures:**
+- Automated failover systems
+- Manual recovery processes
+- Data integrity verification
+- Service restoration protocols
+
+<Warning>
+  Regular backup testing is performed monthly to ensure recovery procedures work correctly.
+</Warning>
+
+## Future Roadmap
+
+### Planned Enhancements
+
+<CardGroup cols={2}>
+  <Card title="Enhanced Analytics" icon="chart-line">
+    - Advanced user behavior tracking
+    - Content performance insights
+    - A/B testing capabilities
+    - Custom reporting dashboards
+  </Card>
+  
+  <Card title="AI Integration" icon="robot">
+    - Content suggestions and optimization
+    - Automated alt text generation
+    - SEO recommendations
+    - Accessibility scanning
+  </Card>
+  
+  <Card title="Mobile App" icon="mobile">
+    - Native mobile application
+    - Offline content access
+    - Push notifications
+    - Mobile-specific features
+  </Card>
+  
+  <Card title="Advanced Workflows" icon="workflow">
+    - Multi-stage approval processes
+    - Automated content scheduling
+    - Integration with external tools
+    - Custom workflow builders
+  </Card>
+</CardGroup>
+
+<Info>
+  This overview provides a high-level understanding of the system. For detailed implementation guides, explore the specific sections in the documentation.
+</Info>

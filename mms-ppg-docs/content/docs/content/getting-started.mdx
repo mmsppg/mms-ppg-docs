@@ -1,0 +1,431 @@
+---
+title: 'Getting Started with Content Management'
+description: 'Learn the basics of creating and managing content in the MMS PPG CMS'
+---
+
+## Welcome to Content Management
+
+The MMS PPG website uses **Directus CMS**, a powerful and user-friendly content management system. This guide will help you understand the basics of creating, editing, and publishing content.
+
+<img src="/images/content/cms-overview.png" alt="Directus CMS interface overview showing navigation and content areas" />
+
+## Accessing the CMS
+
+### Login Process
+
+<Steps>
+  <Step title="Navigate to Admin Panel">
+    Go to [https://mmsppg.themainhost.co.uk/admin](https://mmsppg.themainhost.co.uk/admin)
+    
+    <img src="/images/content/login-screen.png" alt="Login screen with email and password fields" />
+  </Step>
+  
+  <Step title="Enter Your Credentials">
+    Use the email and password provided by your administrator.
+    
+    <Warning>
+      Keep your login credentials secure and don't share them with others.
+    </Warning>
+  </Step>
+  
+  <Step title="Explore the Dashboard">
+    After logging in, you'll see the main dashboard with an overview of your content and recent activity.
+    
+    <img src="/images/content/dashboard-main.png" alt="Main dashboard showing content statistics and recent activity" />
+  </Step>
+</Steps>
+
+## Understanding the Interface
+
+### Navigation Menu
+
+The left sidebar contains the main navigation:
+
+<AccordionGroup>
+  <Accordion title="📊 Dashboard">
+    Your home base showing:
+    - Content overview statistics
+    - Recent activity feed
+    - Quick action buttons
+    - Performance metrics
+  </Accordion>
+
+  <Accordion title="📝 Content">
+    Where you'll spend most of your time:
+    - **Blog Posts**: Articles and news
+    - **Events**: Community events and meetings
+    - **Pages**: Static pages like About, Contact
+    - **Services**: Healthcare services information
+    - **Partners**: Partner organization details
+  </Accordion>
+
+  <Accordion title="📁 Files">
+    Media management area:
+    - Upload images and documents
+    - Organize files in folders
+    - Edit image details and alt text
+    - View file usage across content
+  </Accordion>
+
+  <Accordion title="👥 Users & Roles">
+    User management (if you have permissions):
+    - View user accounts
+    - Manage permissions
+    - Create new user accounts
+  </Accordion>
+
+  <Accordion title="⚙️ Settings">
+    System configuration (admin only):
+    - Site settings
+    - Navigation menus
+    - System preferences
+  </Accordion>
+</AccordionGroup>
+
+### Content List View
+
+<img src="/images/content/content-list-view.png" alt="Content list showing blog posts with titles, status, and dates" />
+
+When you click on a content type (like Blog Posts), you'll see:
+
+- **Search Bar**: Find specific content quickly
+- **Filters**: Filter by status, author, date, etc.
+- **Sort Options**: Order by date, title, or other fields
+- **Bulk Actions**: Select multiple items for batch operations
+- **Create Button**: Add new content
+
+### Content Edit View
+
+<img src="/images/content/content-edit-view.png" alt="Content editing interface with form fields and rich text editor" />
+
+When editing content, you'll see:
+
+- **Form Fields**: Input areas for title, content, etc.
+- **Rich Text Editor**: Format your content with styling tools
+- **Media Picker**: Select and upload images
+- **Status Controls**: Set draft, review, or published status
+- **Save Options**: Save draft or publish immediately
+
+## Content Types Explained
+
+### Blog Posts
+<Card title="Blog Posts" icon="pen-to-square">
+  **Purpose**: Share news, updates, and articles with your community
+  
+  **Common Uses**:
+  - Health tips and advice
+  - Practice updates and announcements
+  - Community news and events
+  - Educational content
+  
+  **Key Fields**:
+  - Title and content
+  - Featured image
+  - Author information
+  - Publication date
+  - Categories and tags
+</Card>
+
+### Events
+<Card title="Events" icon="calendar">
+  **Purpose**: Promote upcoming meetings, workshops, and community events
+  
+  **Common Uses**:
+  - PPG meetings
+  - Health workshops
+  - Community gatherings
+  - Educational sessions
+  
+  **Key Fields**:
+  - Event title and description
+  - Date and time
+  - Location details
+  - Registration information
+  - Contact details
+</Card>
+
+### Pages
+<Card title="Pages" icon="file-text">
+  **Purpose**: Create static information pages that don't change frequently
+  
+  **Common Uses**:
+  - About Us page
+  - Contact information
+  - Services overview
+  - Privacy policy
+  
+  **Key Fields**:
+  - Page title and content
+  - SEO metadata
+  - Navigation placement
+  - Featured images
+</Card>
+
+## Content Workflow
+
+Understanding the content workflow helps ensure quality and consistency:
+
+<img src="/images/content/workflow-diagram.png" alt="Content workflow diagram showing draft, review, and published stages" />
+
+### Workflow Stages
+
+<Tabs>
+  <Tab title="Draft">
+    **What it means**: Content is being created or edited
+    
+    **Who can see it**: Only the creator and administrators
+    
+    **What you can do**:
+    - Make unlimited changes
+    - Save your progress
+    - Preview how it will look
+    - Take your time to perfect it
+    
+    **When to use**: While you're still working on the content
+  </Tab>
+
+  <Tab title="In Review">
+    **What it means**: Content is ready for review and approval
+    
+    **Who can see it**: Creator, reviewers, and administrators
+    
+    **What happens**:
+    - Reviewers get notified automatically
+    - They can add comments and suggestions
+    - Content remains private until approved
+    - You may receive feedback to address
+    
+    **When to use**: When you're happy with your content and ready for feedback
+  </Tab>
+
+  <Tab title="Published">
+    **What it means**: Content is live on the website
+    
+    **Who can see it**: Everyone visiting the website
+    
+    **What happens**:
+    - Content appears on the public website
+    - Search engines can find it
+    - Visitors can read and share it
+    - Analytics start tracking views
+    
+    **When to use**: When content is approved and ready for the public
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+### Writing Guidelines
+
+<AccordionGroup>
+  <Accordion title="✍️ Clear and Simple Language">
+    - Use everyday language that everyone can understand
+    - Avoid medical jargon unless necessary (and explain it)
+    - Keep sentences short and to the point
+    - Use active voice ("We provide services" not "Services are provided")
+  </Accordion>
+
+  <Accordion title="📖 Structure Your Content">
+    - Start with the most important information
+    - Use headings to break up long text
+    - Include bullet points and numbered lists
+    - Add a clear call-to-action at the end
+  </Accordion>
+
+  <Accordion title="🎯 Know Your Audience">
+    - Write for patients and community members
+    - Consider different levels of health literacy
+    - Be empathetic and supportive in tone
+    - Include practical, actionable information
+  </Accordion>
+
+  <Accordion title="📱 Mobile-Friendly Content">
+    - Keep paragraphs short (2-3 sentences)
+    - Use descriptive headings
+    - Ensure images display well on small screens
+    - Test how your content looks on mobile
+  </Accordion>
+</AccordionGroup>
+
+### Image Guidelines
+
+<CardGroup cols={2}>
+  <Card title="Image Quality" icon="image">
+    **Resolution**: At least 1200px wide for featured images
+    
+    **Format**: JPG for photos, PNG for graphics with text
+    
+    **Size**: Keep file sizes under 2MB for faster loading
+    
+    **Composition**: Use high-quality, professional images
+  </Card>
+  
+  <Card title="Accessibility" icon="universal-access">
+    **Alt Text**: Always describe what's in the image
+    
+    **Context**: Explain why the image is relevant
+    
+    **Decorative**: Mark purely decorative images appropriately
+    
+    **Text in Images**: Avoid text in images when possible
+  </Card>
+</CardGroup>
+
+### SEO Basics
+
+<Steps>
+  <Step title="Write Descriptive Titles">
+    - Keep titles under 60 characters
+    - Include relevant keywords naturally
+    - Make them compelling and clickable
+    - Avoid keyword stuffing
+  </Step>
+  
+  <Step title="Create Meta Descriptions">
+    - Summarize the content in 150-160 characters
+    - Include a call-to-action
+    - Make it enticing to click
+    - Use natural language
+  </Step>
+  
+  <Step title="Use Clean URLs">
+    - Keep URLs short and descriptive
+    - Use hyphens to separate words
+    - Avoid special characters
+    - Include relevant keywords
+  </Step>
+  
+  <Step title="Structure with Headings">
+    - Use H1 for the main title (automatic)
+    - Use H2 for main sections
+    - Use H3 for subsections
+    - Keep hierarchy logical
+  </Step>
+</Steps>
+
+## Common Tasks
+
+### Creating New Content
+
+<Steps>
+  <Step title="Choose Content Type">
+    Navigate to the appropriate section (Blog Posts, Events, etc.)
+  </Step>
+  
+  <Step title="Click Create Item">
+    Look for the "+" or "Create Item" button
+  </Step>
+  
+  <Step title="Fill Required Fields">
+    Complete all fields marked with a red asterisk (*)
+  </Step>
+  
+  <Step title="Add Optional Content">
+    Include images, categories, and other relevant information
+  </Step>
+  
+  <Step title="Save as Draft">
+    Save your work regularly to avoid losing changes
+  </Step>
+  
+  <Step title="Review and Publish">
+    When ready, change status to "In Review" or "Published"
+  </Step>
+</Steps>
+
+### Editing Existing Content
+
+<Steps>
+  <Step title="Find the Content">
+    Use the search bar or browse the content list
+  </Step>
+  
+  <Step title="Click to Edit">
+    Click on the content title or the edit icon
+  </Step>
+  
+  <Step title="Make Changes">
+    Edit any fields as needed
+  </Step>
+  
+  <Step title="Save Changes">
+    Click "Save" to preserve your edits
+  </Step>
+</Steps>
+
+### Managing Images
+
+<Steps>
+  <Step title="Access Files Section">
+    Click on "Files" in the main navigation
+  </Step>
+  
+  <Step title="Upload New Images">
+    Drag and drop files or click "Upload Files"
+  </Step>
+  
+  <Step title="Add Alt Text">
+    Click on an image and add descriptive alt text
+  </Step>
+  
+  <Step title="Organize in Folders">
+    Create folders to keep images organized
+  </Step>
+</Steps>
+
+## Keyboard Shortcuts
+
+Speed up your workflow with these shortcuts:
+
+| Action | Windows | Mac | Description |
+|--------|---------|-----|-------------|
+| **Save** | `Ctrl + S` | `Cmd + S` | Save current content |
+| **Bold** | `Ctrl + B` | `Cmd + B` | Make text bold |
+| **Italic** | `Ctrl + I` | `Cmd + I` | Make text italic |
+| **Link** | `Ctrl + K` | `Cmd + K` | Create a link |
+| **Undo** | `Ctrl + Z` | `Cmd + Z` | Undo last action |
+| **Redo** | `Ctrl + Y` | `Cmd + Y` | Redo last action |
+
+## Getting Help
+
+<CardGroup cols={2}>
+  <Card title="Documentation" icon="book">
+    Browse the detailed guides in this documentation for specific tasks and features.
+  </Card>
+  
+  <Card title="Support Team" icon="life-ring">
+    Contact support@mmsppg.org for technical assistance or questions.
+  </Card>
+  
+  <Card title="Training" icon="graduation-cap">
+    Ask your administrator about group training sessions or one-on-one help.
+  </Card>
+  
+  <Card title="Feedback" icon="comment">
+    Use the feedback buttons in this documentation to suggest improvements.
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<Steps>
+  <Step title="Explore the Interface">
+    Take some time to click around and familiarize yourself with the layout
+  </Step>
+  
+  <Step title="Create Your First Content">
+    Start with a simple blog post or event to practice
+  </Step>
+  
+  <Step title="Learn Advanced Features">
+    Read the detailed guides for specific content types
+  </Step>
+  
+  <Step title="Master the Workflow">
+    Understand how content moves from draft to published
+  </Step>
+</Steps>
+
+<Info>
+  Remember: You can't break anything! The system keeps backups and has safeguards in place. Feel free to experiment and learn by doing.
+</Info>
